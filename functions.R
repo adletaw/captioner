@@ -32,10 +32,14 @@ incrementer <- function()
       # add the item to the list if it is not there
       if(!any(obj_list == obj)){
         assign("OBJ_LIST", c(obj_list, obj), inherits = TRUE)
+        
+        # re-grab the object list now that it has been updated
         obj_list <- OBJ_LIST
       }
       
+      # get the number of the object in the vector
       obj_num <- match(obj, obj_list)
+      # create a label using designated text and the number
       obj_label <- paste(pre_text, obj_num, sep = " ")
       
       return(obj_label)
