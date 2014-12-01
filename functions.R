@@ -1,4 +1,4 @@
-## Functions for creating simple captions to be used in Rmd docs
+## Functions for creating numbered captions to be used in Rmd docs
 ## Alathea Letaw, December 2014
 
 ## Thanks to H. Wickham for bumping me up enough skill levels
