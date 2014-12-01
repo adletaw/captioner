@@ -1,4 +1,4 @@
-*captioner* is an R package for generating simple figure and table captions
+*captioner* is an R package for generating figure numbers and captions
 
 the subdirectory `captioner` contains the package files
 
