@@ -1,13 +1,26 @@
-## Functional for keeping track of figure / table numbers
-## A new incrementer function can be generated for each set
-## of figures/tables/other that requires a new set of numbers
+#' Object incrementer function
+#'
+#' Creates a function to keep track of and number figures, tables or other objects
+#'
+#' @return An incrementer function.
+
 incrementer <- function()
 {
   # a vector of object names stored in the function's
   # enclosing environment
   OBJ_LIST <- c()
   
-  function(obj, label = FALSE, pre_text = "Figure"){
+  #' Object incrementer
+  #' 
+  #' Keeps a vector of objects, numbers them, and generates labels
+  #' 
+  #' @param obj Character string containing a unique object name
+  #' @param label Logical indicating whether or not you would like to generate a label
+  #' @param pre_text Character string containing text to go before your object number
+  #' 
+  #' @return If label is TRUE, a character string containing the object number with preceding text
+  
+  my_incrementer <- function(obj, label = FALSE, pre_text = "Figure"){
     # pre_text only required if label is desired
     # default is "Figure"
     
@@ -42,4 +55,6 @@ incrementer <- function()
       return(invisible())
     }
   }
+  
+  return(my_incrementer)
 }
