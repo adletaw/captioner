@@ -1,9 +1,11 @@
 Package: captioner
 Type: Package
-Title: What the package does (short line)
+Title: Numbers figures and creates simple captions
 Version: 1.0
 Date: 2014-12-01
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Alathea D Letaw <alathea@zoology.ubc.ca>
+Maintainer: Alathea D Letaw <alathea@zoology.ubc.ca> 
+Description: Number your figures, tables and/or any other
+objects and generate captions that are super useful for Rmd
+documents.
+License: MIT + file LICENSE
