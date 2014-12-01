@@ -1,19 +1,16 @@
 #' Object incrementer function
 #'
 #' Creates a function to keep track of and number figures, tables or other objects
-#'
-#' @return An incrementer function.
 #' 
-#' @author Alathea D Letaw, \email{alathea@@zoology.ubc.ca}
-#' 
-#' Keeps a vector of objects, numbers them, and generates labels
+#' @usage fig_nums <- incrementer()
+#' @usage fig_nums(obj, label = FALSE, pre_text = "Figure")
 #' 
 #' @param obj Character string containing a unique object name
 #' @param label Logical indicating whether or not you would like to generate a label
 #' @param pre_text Character string containing text to go before your object number
-#' 
+#'
+#' @return An incrementer function.
 #' @return If label is TRUE, a character string containing the object number with preceding text
-
 
 incrementer <- function()
 {

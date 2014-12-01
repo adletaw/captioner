@@ -3,7 +3,7 @@
 \alias{incrementer}
 \title{Object incrementer function}
 \usage{
-incrementer()
+fig_nums <- incrementer()
 }
 \arguments{
 \item{obj}{Character string containing a unique object name}
@@ -19,10 +19,5 @@ If label is TRUE, a character string containing the object number with preceding
 }
 \description{
 Creates a function to keep track of and number figures, tables or other objects
-}
-\author{
-Alathea D Letaw, \email{alathea@zoology.ubc.ca}
-
-Keeps a vector of objects, numbers them, and generates labels
 }
 
