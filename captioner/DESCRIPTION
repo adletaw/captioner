@@ -5,7 +5,5 @@ Version: 1.0
 Date: 2014-12-01
 Author: Alathea D Letaw <alathea@zoology.ubc.ca>
 Maintainer: Alathea D Letaw <alathea@zoology.ubc.ca> 
-Description: Number your figures, tables and/or any other
-objects and generate captions that are super useful for Rmd
-documents.
+Description: Number your figures, tables or any other objects and generate captions that are super useful for Rmd documents.
 License: MIT + file LICENSE
