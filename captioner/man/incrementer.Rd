@@ -5,10 +5,24 @@
 \usage{
 incrementer()
 }
+\arguments{
+\item{obj}{Character string containing a unique object name}
+
+\item{label}{Logical indicating whether or not you would like to generate a label}
+
+\item{pre_text}{Character string containing text to go before your object number}
+}
 \value{
 An incrementer function.
+
+If label is TRUE, a character string containing the object number with preceding text
 }
 \description{
 Creates a function to keep track of and number figures, tables or other objects
+}
+\author{
+Alathea D Letaw, \email{alathea@zoology.ubc.ca}
+
+Keeps a vector of objects, numbers them, and generates labels
 }
 
