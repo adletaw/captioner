@@ -1,16 +1,3 @@
-## Functions for creating numbered captions to be used in Rmd docs
-## Alathea Letaw, December 2014
-
-## Thanks to H. Wickham for bumping me up enough skill levels
-## to do this: http://adv-r.had.co.nz/
-
-## Create a caption for a figure or table
-captioner <- function(...)
-{
-  # pastes together all function inputs
-  paste(..., sep = "")
-}
-
 ## Functional for keeping track of figure / table numbers
 ## A new incrementer function can be generated for each set
 ## of figures/tables/other that requires a new set of numbers
