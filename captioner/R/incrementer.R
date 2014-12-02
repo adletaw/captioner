@@ -9,6 +9,8 @@
 #'
 #' @return An incrementer function.
 #' 
+#' @return A character string containing the figure label and number, if \code{label = TRUE}
+#' 
 #' @examples
 #' fig_nums <- incrementer()
 #' fig_nums("flower_plot")

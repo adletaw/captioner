@@ -14,6 +14,8 @@ incrementer()
 }
 \value{
 An incrementer function.
+
+A character string containing the figure label and number, if \code{label = TRUE}
 }
 \description{
 Creates a function to keep track of and number figures, tables or other objects.
