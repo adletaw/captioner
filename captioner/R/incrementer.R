@@ -3,7 +3,7 @@
 #' Creates a function to keep track of and number figures, tables or other objects
 #' 
 #' @usage fig_nums <- incrementer()
-#' @usage fig_nums(obj, label = FALSE, pre_text = "Figure")
+#' fig_nums(obj, label = FALSE, pre_text = "Figure")
 #' 
 #' @param obj Character string containing a unique object name
 #' @param label Logical indicating whether or not you would like to generate a label
@@ -11,6 +11,13 @@
 #'
 #' @return An incrementer function.
 #' @return If label is TRUE, a character string containing the object number with preceding text
+#' 
+#' @examples
+#' fig_nums <- incrementer()
+#' fig_nums("flower_plot")
+#' fig_nums("tree_plot", label = TRUE)
+#' 
+#' @export
 
 incrementer <- function()
 {

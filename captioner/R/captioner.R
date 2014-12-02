@@ -2,3 +2,5 @@
 #'
 #' @author Alathea D Letaw, \email{alathea@@zoology.ubc.ca}
 #' 
+#' @docType package
+#' @name captioner

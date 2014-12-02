@@ -4,6 +4,7 @@
 \title{Object incrementer function}
 \usage{
 fig_nums <- incrementer()
+fig_nums(obj, label = FALSE, pre_text = "Figure")
 }
 \arguments{
 \item{obj}{Character string containing a unique object name}
@@ -19,5 +20,10 @@ If label is TRUE, a character string containing the object number with preceding
 }
 \description{
 Creates a function to keep track of and number figures, tables or other objects
+}
+\examples{
+fig_nums <- incrementer()
+fig_nums("flower_plot")
+fig_nums("tree_plot", label = TRUE)
 }
 
