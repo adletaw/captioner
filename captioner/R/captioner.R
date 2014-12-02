@@ -4,3 +4,4 @@
 #' 
 #' @docType package
 #' @name captioner
+NULL
