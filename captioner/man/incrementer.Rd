@@ -3,8 +3,8 @@
 \alias{incrementer}
 \title{Object incrementer function}
 \usage{
-fig_nums <- incrementer()
-fig_nums(obj, label = FALSE, pre_text = "Figure")
+incrementer()
+my_incrementer(obj, label = FALSE, pre_text = "Figure")
 }
 \arguments{
 \item{obj}{Character string containing a unique object name}

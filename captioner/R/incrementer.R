@@ -2,8 +2,8 @@
 #'
 #' Creates a function to keep track of and number figures, tables or other objects
 #' 
-#' @usage fig_nums <- incrementer()
-#' fig_nums(obj, label = FALSE, pre_text = "Figure")
+#' @usage incrementer()
+#' my_incrementer(obj, label = FALSE, pre_text = "Figure")
 #' 
 #' @param obj Character string containing a unique object name
 #' @param label Logical indicating whether or not you would like to generate a label
@@ -25,7 +25,7 @@ incrementer <- function()
   # enclosing environment
   OBJ_LIST <- c()
   
-  function(obj, label = FALSE, pre_text = "Figure"){
+  my_incrementer <- function(obj, label = FALSE, pre_text = "Figure"){
     # pre_text only required if label is desired
     # default is "Figure"
     
@@ -60,4 +60,6 @@ incrementer <- function()
       return(invisible())
     }
   }
+  
+  return(my_incrementer)
 }
