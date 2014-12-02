@@ -16,6 +16,8 @@
 #' caption(fig_nums("tree_histogram", label = TRUE),
 #'         "This histogram shows the distribution of tree species.")
 #' 
+#' @seealso \code{\link{incrementer}}
+#' 
 #' @export
 
 caption <- function(...)

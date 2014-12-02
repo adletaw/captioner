@@ -1,21 +1,20 @@
 #' Object incrementer function
 #'
-#' Creates a function to keep track of and number figures, tables or other objects
-#' 
-#' @usage incrementer()
-#' my_incrementer(obj, label = FALSE, pre_text = "Figure")
+#' Creates a function to keep track of and number figures, tables or other objects.
+#' Incrementer takes no arguments but generates a function with the parameters found below.
 #' 
 #' @param obj Character string containing a unique object name
 #' @param label Logical indicating whether or not you would like to generate a label
 #' @param pre_text Character string containing text to go before your object number
 #'
 #' @return An incrementer function.
-#' @return If label is TRUE, a character string containing the object number with preceding text
 #' 
 #' @examples
 #' fig_nums <- incrementer()
 #' fig_nums("flower_plot")
 #' fig_nums("tree_plot", label = TRUE)
+#' 
+#' @seealso \code{\link{caption}}
 #' 
 #' @export
 
@@ -25,7 +24,7 @@ incrementer <- function()
   # enclosing environment
   OBJ_LIST <- c()
   
-  my_incrementer <- function(obj, label = FALSE, pre_text = "Figure"){
+  function(obj, label = FALSE, pre_text = "Figure"){
     # pre_text only required if label is desired
     # default is "Figure"
     
@@ -60,6 +59,4 @@ incrementer <- function()
       return(invisible())
     }
   }
-  
-  return(my_incrementer)
 }
