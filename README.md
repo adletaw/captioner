@@ -6,3 +6,8 @@ to install:
 * `install.packages("devtools")`
 * `library(devtools)`
 * `install_github("adletaw/captioner/captioner")`
+
+functions:
+
+* `incrementer()` returns a function that will increment a set of figures or tables
+* `caption()` simply uses `paste` to combine everything into a single caption
