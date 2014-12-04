@@ -23,7 +23,7 @@ Captioner generates a function with the following parameters
 
 \code{caption}: The object caption
 
-And returns either character string containing the prefix and object number with or without a caption
+And returns a character string containing the prefix and object number with or without a caption
 }
 \examples{
 fig_nums <- captioner()
