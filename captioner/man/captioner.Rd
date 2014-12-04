@@ -32,9 +32,7 @@ Creates a function to create numbered captions for figures, tables or other obje
 }
 \examples{
 fig_nums <- captioner()
-# long format
 fig_nums("flower_plot", "This plot shows the distribution of flower colors")
-# short format
 fig_nums("flower_plot", cite = TRUE)
 }
 \author{
