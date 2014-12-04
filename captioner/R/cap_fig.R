@@ -2,11 +2,9 @@
 #' 
 #' Allows you to create a table caption with automatically generated numbered prefix.
 #' 
-#' @seealso \code{\link{captioner}}
+#' @examples my_caption <- cap_fig("flower_plot", "Histogram of flower colors.")
+#' 
+#' @seealso \code{\link{captioner}}, \code{\link{cap_tab}}
 #' 
 #' @export
-
-cap_fig <- function(...)
-{
-  
-}
+cap_fig <- captioner(prefix = "Figure")

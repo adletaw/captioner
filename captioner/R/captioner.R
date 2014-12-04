@@ -1,22 +1,28 @@
-#' Object incrementer function
+#' Captioner function
 #'
-#' Creates a function to keep track of and number figures, tables or other objects.
-#' Incrementer takes no arguments but generates a function with the parameters found below.
+#' Creates a function to create numbered captions for figures, tables or other objects
 #' 
-#' @param obj Character string containing a unique object name
-#' @param label Logical indicating whether or not you would like to generate a label
-#' @param pre_text Character string containing text to go before your object number
-#'
-#' @return An incrementer function.
+#' @param prefix Character string containing text to go before object number
 #' 
-#' @return A character string containing the figure label and number, if \code{label = TRUE}
+#' @return A captioner function.
+#' 
+#' Captioner generates a function with the following parameters
+#' 
+#' @param name Character string containing a unique object name
+#' @param cite Logical indicating whether or not you would like to generate a short form to use for in-text citation
+#' @param caption The object caption
+#' 
+#' @return A character string containing the prefix and object number with caption
+#' @return A character string containing the prefix and object number with caption if \code{cite = TRUE}
 #' 
 #' @examples
-#' fig_nums <- incrementer()
-#' fig_nums("flower_plot")
-#' fig_nums("tree_plot", label = TRUE)
+#' fig_nums <- captioner()
+#' # long format
+#' fig_nums("flower_plot", "This plot shows the distribution of flower colors")
+#' # short format
+#' fig_nums("flower_plot", cite = TRUE)
 #' 
-#' @seealso \code{\link{caption}}
+#' @seealso \code{\link{cap_fig}}, \code{\link{cap_tab}}
 #' 
 #' @export
 

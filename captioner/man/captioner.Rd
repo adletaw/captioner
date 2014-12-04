@@ -4,12 +4,45 @@
 \alias{captioner}
 \alias{captioner-package}
 \title{captioner: A package for numbering figures and generating captions}
+\usage{
+captioner(prefix = "Figure")
+}
+\arguments{
+\item{prefix}{Character string containing text to go before object number}
+
+\item{name}{Character string containing a unique object name}
+
+\item{cite}{Logical indicating whether or not you would like to generate a short form to use for in-text citation}
+
+\item{caption}{The object caption}
+}
+\value{
+A captioner function.
+
+Captioner generates a function with the following parameters
+
+A character string containing the prefix and object number with caption
+
+A character string containing the prefix and object number with caption if \code{cite = TRUE}
+}
 \description{
-Contains the functions \code{\link{caption}} for generating captions
-and \code{\link{incrementer}} for generating figure or table
-numbers.
+Contains the functions \code{\link{captioner}} for generating captions
+and \code{\link{cap_tab}}, \code{\link{cap_fig}} for simple figure and
+table captions with numbers.
+
+Creates a function to create numbered captions for figures, tables or other objects
+}
+\examples{
+fig_nums <- captioner()
+# long format
+fig_nums("flower_plot", "This plot shows the distribution of flower colors")
+# short format
+fig_nums("flower_plot", cite = TRUE)
 }
 \author{
 Alathea D Letaw, \email{alathea@zoology.ubc.ca}
+}
+\seealso{
+\code{\link{cap_fig}}, \code{\link{cap_tab}}
 }
 
