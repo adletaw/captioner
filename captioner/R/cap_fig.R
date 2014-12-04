@@ -1,8 +1,21 @@
 #' Simple figure/table caption generators
 #' 
+#' @aliases cap_tab
+#' cap_fig
+#' 
 #' A simplified captioner to create numbered figure or table captions without generating your own captioner
 #' 
-#' @examples my_caption <- cap_fig("flower_plot", "Histogram of flower colors.")
+#' @usage cap_fig(name, cite = FALSE, caption = "")
+#' cap_tab(name, cite = FALSE, caption = "")
+#' 
+#' @param name Character string giving a unique name for the figure or table
+#' @param cite Logical indicating whether or not you would like a short form for in text citing
+#' @param caption Character string containing the caption
+#' 
+#' @return Character string containg the prefix and figure/table number with or without caption
+#' 
+#' @examples cap_fig("flower_plot", "Histogram of flower colors.")
+#' cap_tab("flower_table", "Table showing flower color distribution.")
 #' 
 #' @seealso \code{\link{captioner}}
 #' 
