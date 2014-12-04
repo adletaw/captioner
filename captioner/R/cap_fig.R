@@ -2,7 +2,7 @@
 #' 
 #' Allows you to create a table caption with automatically generated numbered prefix.
 #' 
-#' @seealso \code{\link{incrementer}}, \code{\link{caption}}
+#' @seealso \code{\link{captioner}}
 #' 
 #' @export
 
