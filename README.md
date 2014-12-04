@@ -1,11 +1,15 @@
 *captioner* is an R package for generating figure numbers and captions
 
+**Installation**
+
 the subdirectory `captioner` contains the package files
 
 to install:
 * `install.packages("devtools")`
 * `library(devtools)`
 * `install_github("adletaw/captioner/captioner")`
+
+**Usage**
 
 `captioner()` returns a captioner function for each set of figures, tables, etc. that you want to create.  See the help files for more details.
 
