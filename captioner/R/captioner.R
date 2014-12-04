@@ -6,14 +6,15 @@
 #' 
 #' @return A captioner function.
 #' 
-#' Captioner generates a function with the following parameters
+#' @details Captioner generates a function with the following parameters
 #' 
-#' @param name Character string containing a unique object name
-#' @param cite Logical indicating whether or not you would like to generate a short form to use for in-text citation
-#' @param caption The object caption
+#' \code{name}: Character string containing a unique object name
 #' 
-#' @return A character string containing the prefix and object number with caption
-#' @return A character string containing the prefix and object number with caption if \code{cite = TRUE}
+#' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
+#' 
+#' \code{caption}: The object caption
+#' 
+#' And returns either character string containing the prefix and object number with or without a caption
 #' 
 #' @examples
 #' fig_nums <- captioner()

@@ -7,24 +7,23 @@ captioner(prefix = "Figure")
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number}
-
-\item{name}{Character string containing a unique object name}
-
-\item{cite}{Logical indicating whether or not you would like to generate a short form to use for in-text citation}
-
-\item{caption}{The object caption}
 }
 \value{
 A captioner function.
-
-Captioner generates a function with the following parameters
-
-A character string containing the prefix and object number with caption
-
-A character string containing the prefix and object number with caption if \code{cite = TRUE}
 }
 \description{
 Creates a function to create numbered captions for figures, tables or other objects
+}
+\details{
+Captioner generates a function with the following parameters
+
+\code{name}: Character string containing a unique object name
+
+\code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
+
+\code{caption}: The object caption
+
+And returns either character string containing the prefix and object number with or without a caption
 }
 \examples{
 fig_nums <- captioner()
