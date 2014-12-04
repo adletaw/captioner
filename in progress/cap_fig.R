@@ -19,7 +19,6 @@
 #' 
 #' @seealso \code{\link{captioner}}
 #' 
-#' @export
 
 cap_fig <- function(name, cite = FALSE, caption = "")
 {
