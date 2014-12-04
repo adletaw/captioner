@@ -19,9 +19,9 @@ Captioner generates a function with the following parameters
 
 \code{name}: Character string containing a unique object name
 
-\code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
-
 \code{caption}: The object caption
+
+\code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
 
 And returns a character string containing the prefix and object number with or without a caption
 }
