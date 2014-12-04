@@ -1,27 +1,54 @@
-#' Caption generator
+#' Object incrementer function
+#'
+#' Creates a function to keep track of and number figures, tables or other objects.
+#' Incrementer takes no arguments but generates a function with the parameters found below.
 #' 
-#' Works well in conjunction with \code{\link{incrementer}} for creating a numbered figure
-#' caption.  The caption can be stored as an object and used in .Rmd documents for numbering
-#' and labelling figures.
+#' @param obj Character string containing a unique object name
+#' @param label Logical indicating whether or not you would like to generate a label
+#' @param pre_text Character string containing text to go before your object number
+#'
+#' @return An incrementer function.
 #' 
-#' @param ... Character string(s) containing the caption
-#' 
-#' @return A character string containing the caption
+#' @return A character string containing the figure label and number, if \code{label = TRUE}
 #' 
 #' @examples
-#' 
-#' caption("This histogram shows the distribution of flower species.")
-#' 
 #' fig_nums <- incrementer()
-#' caption(fig_nums("tree_histogram", label = TRUE),
-#'         "This histogram shows the distribution of tree species.")
+#' fig_nums("flower_plot")
+#' fig_nums("tree_plot", label = TRUE)
 #' 
-#' @seealso \code{\link{incrementer}}
+#' @seealso \code{\link{caption}}
 #' 
 #' @export
 
-caption <- function(...)
+captioner <- function(prefix = "Figure")
 {
-  # pastes together all function inputs
-  paste(..., sep = "")
+  OBJ_LIST <- c()
+  force(prefix)
+  
+  function(name, cite = FALSE, caption = "")
+  {
+    # grab the object vector from the enclosing environment
+    obj_list <- OBJ_LIST
+    
+    # check to see if the object name is already stored
+    if(!any(OBJ_LIST == name)) {
+      # add the ojbect to the local copy of the object vector
+      obj_list <- c(obj_list, name)
+      
+      # assign the local object vector to the copy in the enclosing environment
+      assign("OBJ_LIST",  obj_list,  envir = parent.env(environment()))
+    }
+        
+    # get the number of the object
+    obj_num <- match(name, obj_list)
+    
+    # choose between short or long format
+    if(cite){
+      text <- paste0(prefix, " ", obj_num)
+    } else{
+      text <- paste0(prefix, " ", obj_num, ": ", caption)
+    }
+    
+    return(text)
+  }
 }
