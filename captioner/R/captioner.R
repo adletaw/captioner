@@ -17,12 +17,8 @@
 #' 
 #' @examples
 #' fig_nums <- captioner()
-#' # long format
 #' fig_nums("flower_plot", "This plot shows the distribution of flower colors")
-#' # short format
 #' fig_nums("flower_plot", cite = TRUE)
-#' 
-#' @seealso \code{\link{cap_fig}}, \code{\link{cap_tab}}
 #' 
 #' @export
 
@@ -49,11 +45,8 @@ captioner <- function(prefix = "Figure")
     obj_num <- match(name, obj_list)
     
     # choose between short or long format
-    if(cite){
-      text <- paste0(prefix, " ", obj_num)
-    } else{
-      text <- paste0(prefix, " ", obj_num, ": ", caption)
-    }
+    if(cite) { text <- paste0(prefix, " ", obj_num) }
+    else     { text <- paste0(prefix, " ", obj_num, ": ", caption) }
     
     return(text)
   }

@@ -26,9 +26,7 @@ A character string containing the prefix and object number with caption
 A character string containing the prefix and object number with caption if \code{cite = TRUE}
 }
 \description{
-Contains the functions \code{\link{captioner}} for generating captions
-and \code{\link{cap_tab}}, \code{\link{cap_fig}} for simple figure and
-table captions with numbers.
+Contains the function \code{\link{captioner}} for generating numbered captions.
 
 Creates a function to create numbered captions for figures, tables or other objects
 }
@@ -41,8 +39,5 @@ fig_nums("flower_plot", cite = TRUE)
 }
 \author{
 Alathea D Letaw, \email{alathea@zoology.ubc.ca}
-}
-\seealso{
-\code{\link{cap_fig}}, \code{\link{cap_tab}}
 }
 
