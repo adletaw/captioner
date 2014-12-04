@@ -10,9 +10,9 @@
 #' 
 #' \code{name}: Character string containing a unique object name
 #' 
-#' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
-#' 
 #' \code{caption}: The object caption
+#' 
+#' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
 #' 
 #' And returns a character string containing the prefix and object number with or without a caption
 #' 
@@ -28,7 +28,7 @@ captioner <- function(prefix = "Figure")
   OBJ_LIST <- c()
   force(prefix)
   
-  function(name, cite = FALSE, caption = "")
+  function(name, caption = "", cite = FALSE)
   {
     # grab the object vector from the enclosing environment
     obj_list <- OBJ_LIST
