@@ -54,7 +54,15 @@ captioner <- function(prefix = "Figure")
       obj_num <- match(name, obj_list)
       
       # find the caption associated with the stored name
-      caption <- captions[obj_num]
+      # if the caption is missing, and you supplied one with the current function
+      # call, the missing one will be filled in with the new one
+      if(captions[obj_num] == ""){
+        # replace empty caption
+        captions[obj_num] <- caption
+      } else {
+        # access existing caption
+        caption <- captions[obj_num]
+      }
     } else {
       # add the ojbect to the local copy of the object vector
       obj_list <- c(obj_list, name)
