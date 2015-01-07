@@ -6,8 +6,29 @@ the subdirectory `captioner` contains the package files
 
 to install:
 * `install.packages("devtools")`
-* `library(devtools)`
-* `install_github("adletaw/captioner/captioner")`
+* `devtools::install_github("adletaw/captioner/captioner")`
+
+**New Features (January 2015)**
+
+Caption storage:
+
+`captioner()` will now store your captions.  This will allow you to print a caption more than once without typing it again.  For example:
+
+`> fig_nums <- captioner()`
+
+`> fig_nums("my_pretty_figure", "my pretty figure's caption")`
+
+"Figure 1: my pretty figure's caption"
+
+Now the caption is stored and can be accessed by:
+
+`> fig_nums("my_pretty_figure")`
+
+"Figure 1: my pretty figure's caption"
+
+Citation order:
+
+`captioner()` will now allow you to cite a figure before creating its caption.  The ordering of the captions is determined first by citation order, then by caption creation order.
 
 **Usage**
 
