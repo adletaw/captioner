@@ -50,7 +50,10 @@ captioner <- function(prefix = "Figure")
     
     # check to see if the object name is already stored
     if(any(obj_list == name)) {
+      # find the number associated with the stored name
       obj_num <- match(name, obj_list)
+      
+      # find the caption associated with the stored name
       caption <- captions[obj_num]
     } else {
       # add the ojbect to the local copy of the object vector
