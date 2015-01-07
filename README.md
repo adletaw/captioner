@@ -30,6 +30,14 @@ Citation order:
 
 `captioner()` will now allow you to cite a figure before creating its caption.  The ordering of the captions is determined first by citation order, then by caption creation order.
 
+`> fig_nums("another_figure", cite = T)`
+
+"Figure 2"
+
+`> fig_nums("another_figure", "this figure's caption")`
+
+"Figure 2: this figure's caption"
+
 **Usage**
 
 `captioner()` returns a captioner function for each set of figures, tables, etc. that you want to create.  See the help files for more details.
