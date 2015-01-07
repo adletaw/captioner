@@ -40,7 +40,6 @@ captioner <- function(prefix = "Figure")
 {
   OBJ_LIST  <- c() # store object names
   CAPTIONS  <- c() # store captions
-  CITATIONS <- c() # keep track of citations
   force(prefix)
   
   function(name, caption = "", cite = FALSE)
@@ -48,7 +47,6 @@ captioner <- function(prefix = "Figure")
     # grab the object and caption vectors from the enclosing environment
     obj_list  <- OBJ_LIST
     captions  <- CAPTIONS
-    citations <- CITATIONS
     
     # check to see if the object name is already stored
     if(any(obj_list == name)) {
@@ -71,8 +69,12 @@ captioner <- function(prefix = "Figure")
     }
         
     # choose between short or long format
-    if(cite) { text <- paste0(prefix, " ", obj_num) }
-    else     { text <- paste0(prefix, " ", obj_num, ": ", caption) }
+    if(!cite) {
+      text <- paste0(prefix, " ", obj_num, ": ", caption)
+      return(text)
+    } else {
+      text <- paste0(prefix, " ", obj_num)
+    }
     
     return(text)
   }
