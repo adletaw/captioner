@@ -2,7 +2,7 @@
 #'
 #' Creates a function to create numbered captions for figures, tables or other objects
 #' 
-#' @param prefix Character string containing text to go before object number
+#' @param prefix Character string containing text to go before object number. The default is "Figure".
 #' 
 #' @return A captioner function.
 #' 
@@ -14,12 +14,25 @@
 #' 
 #' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
 #' 
-#' And returns a character string containing the prefix and object number with or without a caption
+#' And returns a character string containing the prefix and object number with or without a caption.
+#' The initial numbering is determined based on the order of caption creation.  However, this order
+#' is modified based on the citations you use.  The first figure to be cited will be moved to the
+#' beginning of the list, becoming "Figure 1".
 #' 
 #' @examples
+#' Create a new captioner object:
 #' fig_nums <- captioner()
+#' 
+#' Store a caption with the key word "flower_plot". Print the caption
+#' including the figure number:
+#' 
 #' fig_nums("flower_plot", "This plot shows the distribution of flower colors")
+#' 
+#' Cite the figure e.g. "Figure 1", using the key word:
 #' fig_nums("flower_plot", cite = TRUE)
+#' 
+#' Now you can print the caption any time using the designated key:
+#' fig_nums("flower_plot")
 #' 
 #' @export
 
