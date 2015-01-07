@@ -59,6 +59,9 @@ captioner <- function(prefix = "Figure")
       if(captions[obj_num] == ""){
         # replace empty caption
         captions[obj_num] <- caption
+        
+        # assign to parent environment
+        assign("CAPTIONS",  captions,  envir = parent.env(environment()))
       } else {
         # access existing caption
         caption <- captions[obj_num]
