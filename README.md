@@ -1,6 +1,6 @@
 *captioner* is an R package for generating figure numbers and captions
 
-**Current version:** Betamax 1.2 (7 January 2015).  Caption storage and numbering
+**Current version:** [Betamax 1.2](https://github.com/adletaw/captioner/releases) (7 January 2015).  Caption storage and numbering
 by citation order.
 
 **Installation**
