@@ -1,13 +1,10 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Using captioner}
--->
-
 ---
 title: "Using captioner"
-output:
-  html_document: default
+output: rmarkdown::html_vignette
 date: "January 2015"
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Using captioner}
 ---
 
 ```{r init, echo = FALSE, message = FALSE}
