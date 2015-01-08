@@ -10,6 +10,12 @@ output:
 date: "January 2015"
 ---
 
+```{r init, echo = FALSE, message = FALSE}
+library(knitr)
+library(ggplot2)
+```
+
+
 `captioner` is a lightweight R package that allows you to store figure and table captions and print them later.  It also automatically numbers the captions so that you don't have to renumber each time you rearrange them.  This is particularly useful for [R markdown documents](http://rmarkdown.rstudio.com/), which do not currently automatically number captions.
 
 ## Installation
@@ -24,5 +30,119 @@ Now install `captioner`:
 
 ```{r captioner, eval = FALSE}
 devtools::install_github("adletaw/captioner/captioner")
+```
+
+## Usage
+
+Currently, the only function within `captioner` is `captioner()`.  A call to this function will return a new function that you can then use to create and store your captions.  This allows you to create a new function for each set of figures, tables, or any other things that you want to number separately.
+
+### Creating your first set of captions
+
+When you create your function, you can also designate a prefix that will go before the figure number (e.g. "Table 1", "Figure 3").  The default prefix is "Figure", but you can use anything you want.
+
+```{r table_captions_1}
+library(captioner)
+
+table_nums <- captioner(prefix = "Table")
+```
+
+The function, `table_nums` takes 3 arguments: a key word to describe your table, a caption, and a logical indicating whether or not you are generating a citation.  A citation generates only the prefix and table number, whereas the normal behavior is to also display the caption.  The default behavior is to generate the full caption.
+
+Now you can create your first caption:
+
+```{r table_captions_2}
+table_nums(name = "iris", caption = "Edgar Anderson's iris data.  All measurements are in centimetres.")
+```
+
+The caption is automatically stored, so you can always reference it using the supplied keyword:
+
+```{r table_captions_3}
+table_nums("iris")
+```
+
+If you want to use the caption in a formal R markdown caption, you can also store it in its own object and use the `fig.cap` command within your R markdown code chunk
+
+```{r table_captions_4}
+iris_cap <- table_nums("iris")
+```
+
+And your chunk header might look like:
+
+```{r table_captions_4.5, eval = FALSE}
+{r iris_table, fig.cap = iris_cap}
+```
+
+R markdown is pretty finicky about displaying captions, though, so it is probably easiest to use an in-line R code chunk to display the caption:
+
+```{r table_captions_5, eval = FALSE}
+`r table_nums("iris")`
+```
+
+Which looks like:
+
+`r table_nums("iris")`
+
+And is as good as what the `fig.cap` command will do for you.
+
+### Creating your second set of captions
+
+Now suppose you not only have a set of tables, but also a set of figures.  You don't want the numbering of the two to get mixed up, and you also don't want all of your figures to have the "Table" prefix.  All you need to do is create a new `captioner()` function:
+
+```{r fig_caps1}
+fig_nums <- captioner()
+```
+
+Here, you don't need to designate the `prefix` because the default is already set to "Figure".  We can make a bunch of figure captions without worrying about messing up the table numbering.
+
+```{r fig_caps2}
+fig_nums("apple", "Relationship between the number of apple seeds and the size of the apple.")
+fig_nums("milk_fat", "Average percentage of fat in milk from various animals.")
+fig_nums("tree_height", "Distribution of heights in common restinga tree species.")
+```
+
+And now some more tables:
+
+```{r tab_caps}
+table_nums("world_pop", "World populations ordered from greatest to least.")
+table_nums("dolphins", "List of dolphin species and their brain sizes.")
+```
+
+### Citing
+
+Other than displaying full captions, you probably will also want to cite your figures and tables, without the caption, in your text.  You can do this by setting the `cite` argument to `TRUE`.
+
+```{r cite}
+fig_nums("milk_fat", cite = TRUE)
+```
+
+This works particularly well using an inline code chunk:
+
+```{r cite_2, eval = F}
+"There was no significant trend in milk fat between gramnivores" (`r fig_nums("milk_fat", cite = TRUE)`).
+```
+
+Which looks like:
+
+There was no significant trend in milk fat between gramnivores (`r fig_nums("milk_fat", cite = TRUE)`).
+
+It is possible that you will want to cite the figure before actually displaying the figure.  This is not a problem, you can create the citation with or without a caption, and `captioner` will automatically figure out the numbering.  The numbering is designated the first time a figure with that keyword is encountered, whether it's a citation or a full caption.
+
+```{r cite_3}
+fig_nums("snuff", cite = TRUE)
+fig_nums("bounce", "Bounce height (cm) of balls made of various types of rubber.")
+fig_nums("snuff", "Average size of snuff boxes used from 1808 to 1908.")
+fig_nums("bounce", cite = TRUE)
+```
+
+If you find the code for citing particularly cumbersome, you can shorten it by using `partial` from the package `pryr`.  This allows you to preemptively fill in some of the parameters of your `captioner()` function:
+
+```{r pryr}
+library(pryr)
+
+citef <- partial(fig_nums, cite = T)
+citef("bounce")
+
+citet <- partial(table_nums, cite = T)
+citet("iris")
 ```
 
