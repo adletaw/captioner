@@ -38,3 +38,15 @@ If you create a new set of captions, perhaps for your tables, the numbering rest
 `> table_nums("damn_fine_table", "this table is damn fine")`
 
 "Table 1: this table is damn fine"
+
+You can abbreviated in text citations by using `partial` from the package `pryr` to create a shorter version of the function.  For example:
+
+`> citef <- partial(fig_nums, cite = TRUE)`
+
+Now you can shorten this:
+
+`> fig_nums("my_pretty_figure", cite = TRUE)`
+
+To this:
+
+`> citef("my_pretty_figure")`
