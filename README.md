@@ -11,6 +11,9 @@ to install:
 * `install.packages("devtools")`
 * `devtools::install_github("adletaw/captioner/captioner")`
 
+or if you want the vignette:
+* `devtools::install_github("adletaw/captioner/captioner", build_vignettes = TRUE)`
+
 **Usage**
 
 `captioner()` returns a captioner function for each set of figures, tables, etc. that you want to create.  See the help files for more details.
