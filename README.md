@@ -39,7 +39,7 @@ If you create a new set of captions, perhaps for your tables, the numbering rest
 
 "Table 1: this table is damn fine"
 
-You can abbreviated in text citations by using `partial` from the package `pryr` to create a shorter version of the function.  For example:
+You can abbreviate in text citations by using `partial` from the package `pryr` to create a shorter version of the function.  For example:
 
 `> citef <- partial(fig_nums, cite = TRUE)`
 
