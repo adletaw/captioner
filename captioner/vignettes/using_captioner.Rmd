@@ -9,7 +9,6 @@ author: "Alathea DL"
 date: "January 2015"
 output:
   html_document:
-    theme: cosmo
     toc: yes
 ---
 
