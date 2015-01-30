@@ -4,12 +4,12 @@
 \alias{bump}
 \title{Captioner bump function}
 \usage{
-bump(cap_fun, index)
+bump(cap_fun, level)
 }
 \arguments{
 \item{cap_fun}{The captioner function that needs to be bumped}
 
-\item{index}{Numeric indicating which sub-number should be incremented}
+\item{level}{Numeric indicating which sub-number should be incremented}
 }
 \value{
 None.
