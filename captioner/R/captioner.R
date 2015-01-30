@@ -52,6 +52,11 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
     prefix <- paste(prefix, " ")
   }
   
+  # force the number of levels, if not set to FALSE
+  if(levels){
+    force(levels)
+  }
+  
   force(prefix)
   
   function(name, caption = "", cite = FALSE)
