@@ -4,10 +4,12 @@
 \alias{captioner}
 \title{Captioner function}
 \usage{
-captioner(prefix = "Figure")
+captioner(prefix = "Figure", auto_space = TRUE)
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number. The default is "Figure".}
+
+\item{auto_space}{Logical indicating whether or not a space should automatically be added following the prefix.  Space is added by default.}
 }
 \value{
 A captioner function.
