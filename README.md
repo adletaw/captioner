@@ -14,6 +14,7 @@ to install:
 
 or if you want the vignette:
 * `devtools::install_github("adletaw/captioner/captioner", build_vignettes = TRUE)`
+* `vignette("using_captioner")`
 
 **Usage**
 
