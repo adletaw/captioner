@@ -66,7 +66,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   if(is.null(type)){
     type <- c(rep("n", times = levels))
   } else if(length(type) < levels){
-    type[length(type):levels] <- "n"
+    type[(length(type) + 1):levels] <- "n"
   } else if(length(type) > levels){
     type <- type[1:levels]
   }
