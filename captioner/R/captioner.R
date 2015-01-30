@@ -43,6 +43,7 @@
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
                       type = NULL, infix = ".")
 {
+  ## Make sure all of the parameters are setup correctly ---
   
   # Check the parameter classes
   check_class(prefix,     "character")
@@ -50,10 +51,6 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   check_class(levels,     "numeric")
   check_class(infix,      "character")
   
-  # store object names, numbers, and captions
-  OBJECTS <- list("name"    = NULL,
-                  "caption" = NULL,
-                  "number"  = list())
   # Check "type" vector
   
   # Set missing/NULL "type" values to numeric
@@ -66,19 +63,17 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     type <- type[1:levels]
   }
   
-  # add a space after the prefix if auto_space is on
   # Give error if wrong types were used
   if(!all(type %in% c("n", "c", "C"))){
     stop("Invalid 'type' value used.  Expecting 'n', 'c', or 'C'.")
   }
+  
+  # Add a space after the prefix if auto_space is on
   if(auto_space){
     prefix <- paste(prefix, " ")
   }
   
-  # create the first caption number
-  OBJECTS$number[[1]] <- create_first_number()
-  
-  # force the parameter values for use in the return function
+  # Force the parameter values for use in the return function
   force(levels)  
   force(prefix)
   force(infix)
@@ -95,19 +90,24 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   OBJECTS$number[[1]][which(type == "n")] <- 1
   OBJECTS$number[[1]][which(type == "c")] <- "a"
   OBJECTS$number[[1]][which(type == "C")] <- "A"
+  
+  ## Create and return the specialized captioning function ---
+  
   function(name, caption = "", cite = FALSE)
   {
-    # grab the caption and number lists from the enclosing environment
+    ## Get the object list from the enclosing environment ---
     objects <- OBJECTS
     
-    # check to see if the object name is already stored
+    ## Assign the new name and caption to the list ---
+    
+    # Is the name already stored?
     if(any(objects$name == name)) {
       # find the index associated with the stored name
       obj_ind <- match(name, objects$name)
       
       # find the caption associated with the stored name
-      # if the caption is missing, and you supplied one with the current function
-      # call, the missing one will be filled in with the new one
+      # if the caption is missing, and you supplied one with the current
+      # function call, the missing one will be filled in with the new one
       if(objects$caption[obj_ind] == ""){
         # replace empty caption
         objects$caption[obj_ind] <- caption
@@ -132,8 +132,11 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
       objects$caption[obj_ind] <- caption
     }
     
-    # assign objects to the parent environment
+    ## Copy "objects" back to the parent environment ---
+    
     assign("OBJECTS", objects, envir = parent.env(environment()))
+    
+    ## Format the display ready output ---
     
     # create display version of object number
     obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
