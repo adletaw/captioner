@@ -51,10 +51,10 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   }
   
   # Check the parameter classes
-  check_class(prefix, "character")
+  check_class(prefix,     "character")
   check_class(auto_space, "logical")
-  check_class(level, "numeric")
-  check_class(infix, "character")
+  check_class(levels,     "numeric")
+  check_class(infix,      "character")
   
   # store object names, numbers, and captions
   OBJECTS <- list("name"    = NULL,
