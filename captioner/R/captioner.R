@@ -16,6 +16,8 @@
 #' 
 #' \code{caption}: The object caption
 #' 
+#' \code{level}: Which number in the hierarchy should be incremented.  By default, the last number.
+#' 
 #' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
 #' 
 #' And returns a character string containing the prefix and object number with or without a caption.
