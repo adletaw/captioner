@@ -41,7 +41,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type, infix = ".")
+                      type = NULL, infix = ".")
 {
   # Check the parameter classes
   check_class(prefix,     "character")
