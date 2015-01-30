@@ -40,9 +40,22 @@
 #' 
 #' @export
 
-captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
+captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
                       type, infix = ".")
 {
+  # Function to check the class of the parameters
+  check_class <- function(.param, .class){
+    if(class(.param) != .class){
+      stop(paste0("Wrong type supplied. Expecting parameter of class ", .class, "."))
+    }
+  }
+  
+  # Check the parameter classes
+  check_class(prefix, "character")
+  check_class(auto_space, "logical")
+  check_class(level, "numeric")
+  check_class(infix, "character")
+  
   # store object names, numbers, and captions
   OBJECTS <- list("name"    = NULL,
                   "caption" = NULL,
@@ -53,11 +66,8 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
     prefix <- paste(prefix, " ")
   }
   
-  # force the number of levels, if not set to FALSE
-  if(levels){
-    force(levels)
-  }
-  
+  # force the value of levels and prefix
+  force(levels)  
   force(prefix)
   
   function(name, caption = "", cite = FALSE)
