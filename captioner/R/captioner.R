@@ -43,25 +43,6 @@
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
                       type = NULL, infix = ".")
 {
-  ## Internal functions
-  
-  # Create the first number in the object list
-  create_first_number <- function()
-  {
-    n_list <- list()
-    
-    for(i in 1:levels){
-      if(missing(type)){
-        n_list[[i]] <- 1
-      } else if(type[i] == "c"){
-        n_list[[i]] <- "a"
-      } else if(type[i] == "C"){
-        n_list[[i]] <- "A"
-      } else{
-        n_list[[i]] <- 1
-      }
-    }
-  }
   
   # Check the parameter classes
   check_class(prefix,     "character")
@@ -73,8 +54,23 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   OBJECTS <- list("name"    = NULL,
                   "caption" = NULL,
                   "number"  = list())
+  # Check "type" vector
+  
+  # Set missing/NULL "type" values to numeric
+  # Cut off extra values
+  if(is.null(type)){
+    type <- c(rep("n", times = levels))
+  } else if(length(type) < levels){
+    type[length(type):levels] <- "n"
+  } else if(length(type) > levels){
+    type <- type[1:levels]
+  }
   
   # add a space after the prefix if auto_space is on
+  # Give error if wrong types were used
+  if(!all(type %in% c("n", "c", "C"))){
+    stop("Invalid 'type' value used.  Expecting 'n', 'c', or 'C'.")
+  }
   if(auto_space){
     prefix <- paste(prefix, " ")
   }
@@ -87,6 +83,18 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   force(prefix)
   force(infix)
   
+  ## Create the OBJECT list ---
+  
+  # Create a list to store object names, captions, and numbers
+  OBJECTS <- list("name"    = NULL,
+                  "caption" = NULL,
+                  "number"  = list(list()))
+  
+  # Assign the first caption number
+  # Note that extra values of "type" are ignored by looping over "levels"
+  OBJECTS$number[[1]][which(type == "n")] <- 1
+  OBJECTS$number[[1]][which(type == "c")] <- "a"
+  OBJECTS$number[[1]][which(type == "C")] <- "A"
   function(name, caption = "", cite = FALSE)
   {
     # grab the caption and number lists from the enclosing environment
