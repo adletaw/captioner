@@ -66,9 +66,10 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     prefix <- paste(prefix, " ")
   }
   
-  # force the value of levels and prefix
+  # force the parameter values for use in the return function
   force(levels)  
   force(prefix)
+  force(infix)
   
   function(name, caption = "", cite = FALSE)
   {
