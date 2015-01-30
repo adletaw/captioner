@@ -3,7 +3,7 @@
 #' For figure numbers with sub-values (e.g. 1.1), increment one of the sub-values for use in
 #' the next figure.
 #' 
-#' @param cap_fun Character string containing the name of your cpationer function
+#' @param cap_fun The captioner function that needs to be bumped
 #' @param index Numeric indicating which sub-number should be incremented
 #' 
 #' @return None.
@@ -26,5 +26,12 @@
 #' @export
 
 bump <- function(cap_fun, index){
+  # get the function's environment
+  e <- environment(cap_fun)
   
+  # the number of object numbers already present
+  num_objs <- length(e$OBJECTS$number)
+  
+  # add a number incremented at the desired level to the objects list
+  e$OBJECTS$number[[num_objs + 1]] <- increment(e$OBJECTS$number[[num_objs]], index)
 }
