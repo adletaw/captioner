@@ -3,6 +3,7 @@
 #' Creates a function to create numbered captions for figures, tables or other objects
 #' 
 #' @param prefix Character string containing text to go before object number. The default is "Figure".
+#' @param auto_space Logical indicating whether or not a space should automatically be added following the prefix.  Space is added by default.
 #' 
 #' @return A captioner function.
 #' 
@@ -36,10 +37,15 @@
 #' 
 #' @export
 
-captioner <- function(prefix = "Figure")
+captioner <- function(prefix = "Figure", auto_space = TRUE)
 {
   OBJ_LIST  <- c() # store object names
   CAPTIONS  <- c() # store captions
+  
+  if(auto_space){
+    prefix <- paste(prefix, " ")
+  }
+  
   force(prefix)
   
   function(name, caption = "", cite = FALSE)
@@ -81,10 +87,10 @@ captioner <- function(prefix = "Figure")
         
     # choose between short or long format
     if(!cite) {
-      text <- paste0(prefix, " ", obj_num, ": ", caption)
+      text <- paste0(prefix, obj_num, ": ", caption)
       return(text)
     } else {
-      text <- paste0(prefix, " ", obj_num)
+      text <- paste0(prefix, obj_num)
     }
     
     return(text)
