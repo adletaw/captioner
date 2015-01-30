@@ -17,8 +17,8 @@
 increment <- function(number, level)
 {
   # check if you got to the end of the alphabet
-  check_letter <- function(.index){
-    if(.index >= 26) warning("You have reached the end of the alphabet. Returning NA.")
+  check_letter <- function(n){
+    if(n >= 26) warning("You have reached the end of the alphabet. Returning NA.")
     else(return(invisible()))
   }
     
