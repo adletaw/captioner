@@ -40,17 +40,13 @@
 #' 
 #' @export
 
-captioner <- function(prefix = "Figure", auto_space = TRUE)
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
                       type, infix = ".")
 {
-  OBJ_LIST  <- c() # store object names
   # store object names, numbers, and captions
   OBJECTS <- list("name" = NULL,
                   "caption" = NULL,
                   "number" = NULL)
-  
-  CAPTIONS  <- c() # store captions
   
   # add a space after the prefix if auto_space is on
   if(auto_space){
@@ -64,12 +60,10 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
   
   force(prefix)
   
-  function(name, caption = "", cite = FALSE)
   function(name, caption = "", level = levels, cite = FALSE)
   {
-    # grab the object and caption vectors from the enclosing environment
-    obj_list  <- OBJ_LIST
-    captions  <- CAPTIONS
+    # grab the caption and number lists from the enclosing environment
+    objects <- OBJECTS
     
     # check to see if the object name is already stored
     if(any(obj_list == name)) {
