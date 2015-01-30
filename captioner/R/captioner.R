@@ -41,9 +41,25 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".")
+                      type, infix = ".")
 {
   # Internal functions
+  create_first_number <- function()
+  {
+    n_list <- list()
+    
+    for(i in 1:levels){
+      if(missing(type)){
+        n_list[[i]] <- 1
+      } else if(type[i] == "c"){
+        n_list[[i]] <- "a"
+      } else if(type[i] == "C"){
+        n_list[[i]] <- "A"
+      } else{
+        n_list[[i]] <- 1
+      }
+    }
+  }
   
   # Check the parameter classes
   check_class(prefix,     "character")
@@ -54,7 +70,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   # store object names, numbers, and captions
   OBJECTS <- list("name"    = NULL,
                   "caption" = NULL,
-                  "number"  = NULL)
+                  "number"  = list())
   
   # add a space after the prefix if auto_space is on
   if(auto_space){
@@ -62,20 +78,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   }
   
   # create the first caption number
-  OBJECTS$number <- list()
-  OBJECTS$number[[1]] <- list()
-  
-  for(i in 1:levels){
-    if(missing(type)){
-      OBJECTS$number[[1]][[i]] <- 1
-    } else if(type[i] == "c"){
-      OBJECTS$number[[1]][[i]] <- "a"
-    } else if(type[i] == "C"){
-      OBJECTS$number[[1]][[i]] <- "A"
-    } else{
-      OBJECTS$number[[1]][[i]] <- 1
-    }
-  }
+  OBJECTS$number[[1]] <- create_first_number()
   
   # force the parameter values for use in the return function
   force(levels)  
