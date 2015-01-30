@@ -4,7 +4,7 @@
 #'
 #' @description Contains the function \code{\link{captioner}} for generating numbered captions.
 #'
-#' @author Alathea D Letaw, \email{alathea@@zoology.ubc.ca}
+#' @author Alathea D Letaw, \email{alathea@zoology.ubc.ca}
 #' 
 #' @docType package
 #' @name captioner
