@@ -144,3 +144,30 @@ citet <- partial(table_nums, cite = T)
 citet("iris")
 ```
 
+### Implementing hierarchical numbering
+
+If you want figure numbers with more depth, say if you have a figure with subfigures, or have figure numbers attached to sections, you can implement hierarchical numbering.  This will give you, for example, something like "Figure 1.1.1".
+
+```{r hierarchy}
+figs_2 <- captioner(levels = 3, type = c("n", "n", "n"), infix = "-")
+figs_2("A", "The letter A in several typefaces.")
+```
+
+The three new parameters tell `captioner` how many subsets of numbers you want (`levels`), whether you want a number or a character for each (`type`), and what you want separating them (`infix`).  For `type`, the choices are `"n"` - a number, `"c"` - a lowercase character, or `"C"` - an uppercase character.  If your vector is too short, or if you choose not to supply any `type`, `captioner` will automatically fill in the missing `type`s with numbers.  The default `infix` is `.`, but you can choose anything you want.
+
+Normally, a call to `figs_2` will only increment the final number or character in your figure number.  If you want to increment an earlier value, there are two ways.  First, you can set the parameter `level` inside of `figs_2`.  `level` gives the number corresponding to which value you want incremented.  For example, if you want to bump up from `1.1.1` to `1.2.1`:
+
+```{r hierarchy_2}
+figs_2("B", cite = T, level = 2)
+```
+
+The second way to do this is to use the function `bump`, introduced in `captioner` version 2.0.  If you have a document with many chapters or sections, `bump` may be more convenient because it is not connected to a specific figure.  Instead, you can place it after your section heading, and all subsequent figures will have the bumped up numbering.
+
+`bump` takes as parameters your captioner function, and a numbering indicating which level you want bumped:
+
+```{r hierarchy_3}
+bump(figs_2, level = 1)
+
+figs_2("C", "The letter C shown in fixed-width fonts.")
+```
+
