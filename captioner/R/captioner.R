@@ -45,6 +45,11 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
                       type, infix = ".")
 {
   OBJ_LIST  <- c() # store object names
+  # store object names, numbers, and captions
+  OBJECTS <- list("name" = NULL,
+                  "caption" = NULL,
+                  "number" = NULL)
+  
   CAPTIONS  <- c() # store captions
   
   # add a space after the prefix if auto_space is on
