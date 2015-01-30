@@ -68,35 +68,31 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
     objects <- OBJECTS
     
     # check to see if the object name is already stored
-    if(any(obj_list == name)) {
+    if(any(objects$name == name)) {
       # find the number associated with the stored name
-      obj_num <- match(name, obj_list)
+      obj_num <- match(name, objects$name)
       
       # find the caption associated with the stored name
       # if the caption is missing, and you supplied one with the current function
       # call, the missing one will be filled in with the new one
-      if(captions[obj_num] == ""){
+      if(objects$caption[obj_num] == ""){
         # replace empty caption
-        captions[obj_num] <- caption
-        
-        # assign to parent environment
-        assign("CAPTIONS",  captions,  envir = parent.env(environment()))
+        objects$caption[obj_num] <- caption
       } else {
         # access existing caption
-        caption <- captions[obj_num]
+        caption <- objects$caption[obj_num]
       }
     } else {
-      # add the ojbect to the local copy of the object vector
-      obj_list <- c(obj_list, name)
-      captions <- c(captions, caption)
+      # add the object to the local copy of the object vector
+      objects$name    <- c(objects$name, name)
+      objects$caption <- c(objects$caption, caption)
       
       # get the number of the object
-      obj_num <- match(name, obj_list)
-      
-      # assign the local vector to the copy in the enclosing environment
-      assign("OBJ_LIST",  obj_list,  envir = parent.env(environment()))
-      assign("CAPTIONS",  captions,  envir = parent.env(environment()))
+      obj_num <- match(name, objects$name)
     }
+    
+    # assign objects to the parent environment
+    assign("OBJECTS", objects, envir = parent.env(environment()))
         
     # choose between short or long format
     if(!cite) {
