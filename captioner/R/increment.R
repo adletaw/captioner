@@ -19,7 +19,6 @@ increment <- function(number, level)
   # check if you got to the end of the alphabet
   check_letter <- function(n){
     if(n >= 26) warning("You have reached the end of the alphabet. Returning NA.")
-    else(return(invisible()))
   }
     
   # check if the value at the supplied level is a letter or a number
