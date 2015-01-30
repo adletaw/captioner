@@ -21,30 +21,38 @@ increment <- function(number, level)
     if(n >= 26) warning("You have reached the end of the alphabet. Returning NA.")
   }
     
-  # check if the value at the supplied level is a letter or a number
+  # check if the value at the supplied index is a letter or a number
   # then increment it
-  inc_lett_num <- function(){
-    if(is.numeric(number[[level]])){
-      # Increment the number
-      number[[level]] <- number[[level]] + 1
-    } else if(any(letters == number[[level]])) {
-        num <- which(letters == number[[level]])
-        number[[level]] <- letters[num + 1]
-        check_letter(num)
-    } else if(any(LETTERS == number[[level]])) {
-        num <- which(LETTERS == number[[level]])
-        number[[level]] <- LETTERS[num + 1]
-        check_letter(num)
-    } else stop("Number contains invalid data types.")
+  inc_lett_num <- function(n_list, index){
+    # Increment a number
+    if(is.numeric(n_list[[index]]))
+    {
+      n_list[[index]] <- n_list[[index]] + 1
+    }
+    else if(any(letters == n_list[[index]]))
+    {
+      num <- which(letters == n_list[[index]])
+      n_list[[index]] <- letters[num + 1]
+      check_letter(num)
+    }
+    else if(any(LETTERS == n_list[[index]]))
+    {
+      num <- which(LETTERS == n_list[[index]])
+      n_list[[index]] <- LETTERS[num + 1]
+      check_letter(num)
+    }
+    else stop("List contains invalid data types.  Only character or numeric allowed.")
+    
+    return(n_list)
   }
   
   # Check level to see if it is >, < or == the length of the number
   if(level > length(number)){
     stop("Increment level supplied is out of bounds.")
   } else if(level == length(number)){
-    inc_lett_num()
+    number <- inc_lett_num(number, level)
   } else {
-    inc_lett_num()
+    number <- inc_lett_num(number, level)
     
     # set all remaining letters/numbers to the lowest value
     for(i in (level + 1):length(number)){
