@@ -109,7 +109,6 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     # choose between short or long format
     if(!cite) {
       text <- paste0(prefix, obj_num, ": ", caption)
-      return(text)
     } else {
       text <- paste0(prefix, obj_num)
     }
