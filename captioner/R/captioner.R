@@ -18,6 +18,8 @@
 #' 
 #' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
 #' 
+#' \code{level}: Optional numeric used to bump up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
+#' 
 #' And returns a character string containing the prefix and object number with or without a caption.
 #' The initial numbering is determined based on the order of caption creation.  However, this order
 #' is modified based on the citations you use.  The first figure to be cited will be moved to the
@@ -101,8 +103,13 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   
   ## Create and return the specialized captioning function ---
   
-  function(name, caption = "", cite = FALSE)
+  function(name, caption = "", cite = FALSE, level = FALSE)
   {
+    ## Error check parameters --
+    if(level > levels){
+      stop("Level too large.")
+    }    
+    
     ## Get the object list from the enclosing environment ---
     objects <- OBJECTS
     
@@ -131,8 +138,14 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
       # If there is already a nameless number, none will be added
       # Otherwise the number is incremented
       if(length(objects$number) == length(objects$name)){
-        # increment the previous number and add as the new number
-        objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], levels)
+        if(level){
+          # bump the numbering at an earlier level
+          objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], level)
+        } else{
+          # increment the previous number and add as the new number
+          objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], levels)
+          
+        }
       }
       
       # store the object name and caption at the current index
