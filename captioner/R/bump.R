@@ -4,7 +4,7 @@
 #' the next figure.
 #' 
 #' @param cap_fun The captioner function that needs to be bumped
-#' @param index Numeric indicating which sub-number should be incremented
+#' @param level Numeric indicating which sub-number should be incremented
 #' 
 #' @return None.
 #' 
@@ -25,7 +25,7 @@
 #' 
 #' @export
 
-bump <- function(cap_fun, index){
+bump <- function(cap_fun, level){
   # get the function's environment
   e <- environment(cap_fun)
   
@@ -33,5 +33,5 @@ bump <- function(cap_fun, index){
   num_objs <- length(e$OBJECTS$number)
   
   # add a number incremented at the desired level to the objects list
-  e$OBJECTS$number[[num_objs + 1]] <- increment(e$OBJECTS$number[[num_objs]], index)
+  e$OBJECTS$number[[num_objs + 1]] <- increment(e$OBJECTS$number[[num_objs]], level)
 }
