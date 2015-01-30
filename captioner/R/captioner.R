@@ -65,6 +65,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
   force(prefix)
   
   function(name, caption = "", cite = FALSE)
+  function(name, caption = "", level = levels, cite = FALSE)
   {
     # grab the object and caption vectors from the enclosing environment
     obj_list  <- OBJ_LIST
