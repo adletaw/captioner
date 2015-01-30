@@ -1,7 +1,8 @@
 *captioner* is an R package for generating figure numbers and captions
 
-**Current version:** [Betamax 1.2](https://github.com/adletaw/captioner/releases) (7 January 2015).  Caption storage and numbering
-by citation order.
+**Current version:** [Betadiversity 1.0]() (30 January 2015).  Hierarchical numbering (e.g. Figure 1.1).
+
+**Previous version:** [Betamax 1.2](https://github.com/adletaw/captioner/releases) (7 January 2015).
 
 **Installation**
 
@@ -53,6 +54,8 @@ Now you can shorten this:
 To this:
 
 `> citef("my_pretty_figure")`
+
+Take a look at the vignette for many more details.
 
 ***
 
