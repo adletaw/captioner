@@ -4,6 +4,9 @@
 #' 
 #' @param prefix Character string containing text to go before object number. The default is "Figure".
 #' @param auto_space Logical indicating whether or not a space should automatically be added following the prefix.  Space is added by default.
+#' @param levels Logical or number indicating whether or not you want hierarchical numbering, and if so, how many levels.  Hierarchical numbering is turned off by default.
+#' @param type Vector with same length as `levels` indicating whether figure numbering should be numeric ("n"), lowercase alphabetical ("a"), or uppercase alphabetical ("A").
+#' @param infix Character string containing text to go between figure numbers if hierarchical numbering is on.
 #' 
 #' @return A captioner function.
 #' 
@@ -38,6 +41,8 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE)
+captioner <- function(prefix = "Figure", auto_space = TRUE, levels = FALSE,
+                      type, infix = ".")
 {
   OBJ_LIST  <- c() # store object names
   CAPTIONS  <- c() # store captions
