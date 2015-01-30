@@ -43,13 +43,6 @@
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
                       type, infix = ".")
 {
-  # Function to check the class of the parameters
-  check_class <- function(.param, .class){
-    if(class(.param) != .class){
-      stop(paste0("Wrong type supplied. Expecting parameter of class ", .class, "."))
-    }
-  }
-  
   # Check the parameter classes
   check_class(prefix,     "character")
   check_class(auto_space, "logical")
