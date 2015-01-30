@@ -1,8 +1,8 @@
 *captioner* is an R package for generating figure numbers and captions
 
-**Current version:** [Betadiversity 1.0]() (30 January 2015).  Hierarchical numbering (e.g. Figure 1.1).
+**Current version:** [Betadiversity 2.0](https://github.com/adletaw/captioner/releases/tag/v2.0) (30 January 2015).  Hierarchical numbering (e.g. Figure 1.1).
 
-**Previous version:** [Betamax 1.2](https://github.com/adletaw/captioner/releases) (7 January 2015).
+**Previous version:** [Betamax 1.2](https://github.com/adletaw/captioner/releases/tag/v1.2) (7 January 2015).
 
 **Installation**
 
