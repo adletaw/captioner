@@ -5,8 +5,8 @@
 #' @param prefix Character string containing text to go before object number. The default is "Figure".
 #' @param auto_space Logical indicating whether or not a space should automatically be added following the prefix.  Space is added by default.
 #' @param levels Logical or number indicating whether or not you want hierarchical numbering, and if so, how many levels.  Hierarchical numbering is turned off by default.
-#' @param type Vector with same length as `levels` indicating whether figure numbering should be numeric ("n"), lowercase character ("c"), or uppercase character ("C").
-#' @param infix Character string containing text to go between figure numbers if hierarchical numbering is on.
+#' @param type Vector with same length as `levels` indicating whether figure numbering should be numeric ("n"), lowercase character ("c"), or uppercase character ("C").  If unspecified, `captioner` will revert to all numeric values.
+#' @param infix Character string containing text to go between figure numbers if hierarchical numbering is on.  Default is "."
 #' 
 #' @return A captioner function.
 #' 
@@ -25,6 +25,7 @@
 #' 
 #' @examples
 #' Create a new captioner object:
+#' 
 #' fig_nums <- captioner()
 #' 
 #' Store a caption with the key word "flower_plot". Print the caption
@@ -33,11 +34,18 @@
 #' fig_nums("flower_plot", "This plot shows the distribution of flower colors")
 #' 
 #' Cite the figure e.g. "Figure 1", using the key word:
+#' 
 #' fig_nums("flower_plot", cite = TRUE)
 #' 
 #' Now you can print the caption any time using the designated key:
-#' fig_nums("flower_plot")
 #' 
+#' fig_nums("flower_plot")
+#'
+#' Create a captioner object with hierarchical numbering:
+#' 
+#' tables <- captioner(prefix = "Table", levels = 2)
+#' tables("a", "Table of world populations sorted from greatest to least.")
+#'   
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
