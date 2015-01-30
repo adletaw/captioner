@@ -115,25 +115,21 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
         # access existing caption
         caption <- objects$caption[obj_ind]
       }
-    } else {
-      # check for an existing object number
-      if(length(objects$number) > length(objects$name)){
-        # add name and caption to index of earliest unassigned number
-        obj_ind <- length(objects$name) + 1
-        
-        objects$name[obj_ind]    <- name
-        objects$caption[obj_ind] <- caption
-      } else{
-        # add the object to the local copy of the object vector
-        objects$name    <- c(objects$name, name)
-        objects$caption <- c(objects$caption, caption)
-        
-        # get the index of the new object
-        obj_ind <- match(name, objects$name)
-        
-        # add the number
-        objects$number <- increment(objects$number[[obj_ind - 1]], levels)
+    }  
+    else {
+      # get the earliest available index
+      obj_ind                  <- length(objects$name) + 1
+            
+      # If there is already a nameless number, none will be added
+      # Otherwise the number is incremented
+      if(length(objects$number) == length(objects$name)){
+        # increment the previous number and add as the new number
+        objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], levels)
       }
+      
+      # store the object name and caption at the current index
+      objects$name[obj_ind]    <- name
+      objects$caption[obj_ind] <- caption
     }
     
     # assign objects to the parent environment
