@@ -43,7 +43,9 @@
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
                       type, infix = ".")
 {
-  # Internal functions
+  ## Internal functions
+  
+  # Create the first number in the object list
   create_first_number <- function()
   {
     n_list <- list()
