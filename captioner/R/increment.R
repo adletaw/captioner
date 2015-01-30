@@ -3,7 +3,7 @@
 #' Given a vector of numbers representing a subfigure, or a subsection figure, this function will
 #' increment the original figure number
 #' 
-#' @param number A list of numbers or characters representing the complete figure numbering
+#' @param values A list of numbers or characters representing the complete figure numbering
 #' @param level An index designating at which level the number should be incremented
 #' 
 #' @return A vector representing the incremented number
@@ -14,7 +14,7 @@
 #' 
 #' @export
 
-increment <- function(number, level)
+increment <- function(values, level)
 {
   # check if you got to the end of the alphabet
   check_letter <- function(n){
@@ -29,12 +29,14 @@ increment <- function(number, level)
     {
       n_list[[index]] <- n_list[[index]] + 1
     }
+    # Increment a lowercase letter
     else if(any(letters == n_list[[index]]))
     {
       num <- which(letters == n_list[[index]])
       n_list[[index]] <- letters[num + 1]
       check_letter(num)
     }
+    # Increment an uppercase letter
     else if(any(LETTERS == n_list[[index]]))
     {
       num <- which(LETTERS == n_list[[index]])
@@ -46,23 +48,32 @@ increment <- function(number, level)
     return(n_list)
   }
   
-  # Check level to see if it is >, < or == the length of the number
-  if(level > length(number)){
+  # If requested increment level is greater than the length of the list, stop.
+  if(level > length(values))
+  {
     stop("Increment level supplied is out of bounds.")
-  } else if(level == length(number)){
-    number <- inc_lett_num(number, level)
-  } else {
-    number <- inc_lett_num(number, level)
+  }
+  # If requested level is equal to the length of the list, increment
+  # only the final value in the list
+  else if(level == length(values))
+  {
+    values <- inc_lett_num(values, level)
+  }
+  # If requested level is less than the length of the list, increment the value
+  # and set all following values to 1, a, or A
+  else
+  {
+    values <- inc_lett_num(values, level)
     
     # set all remaining letters/numbers to the lowest value
-    for(i in (level + 1):length(number)){
-      if(any(LETTERS == number[i])){
-        number[i] <- "A"
-      } else if(any(letters == number[i])){
-        number[i] <- "a"
-      } else number[i] <- 1
+    for(i in (level + 1):length(values)){
+      if(any(LETTERS == values[i])){
+        values[i] <- "A"
+      } else if(any(letters == values[i])){
+        values[i] <- "a"
+      } else values[i] <- 1
     }
   }
   
-  return(number)
+  return(values)
 }
