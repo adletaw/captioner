@@ -4,12 +4,19 @@
 \alias{captioner}
 \title{Captioner function}
 \usage{
-captioner(prefix = "Figure", auto_space = TRUE)
+captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
+  infix = ".")
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number. The default is "Figure".}
 
 \item{auto_space}{Logical indicating whether or not a space should automatically be added following the prefix.  Space is added by default.}
+
+\item{levels}{Logical or number indicating whether or not you want hierarchical numbering, and if so, how many levels.  Hierarchical numbering is turned off by default.}
+
+\item{type}{Vector with same length as `levels` indicating whether figure numbering should be numeric ("n"), lowercase character ("c"), or uppercase character ("C").}
+
+\item{infix}{Character string containing text to go between figure numbers if hierarchical numbering is on.}
 }
 \value{
 A captioner function.
