@@ -16,5 +16,8 @@
 
 increment <- function(number, level)
 {
-  
+  # Error check
+  if(level > length(number)){
+    stop("Increment level supplied is out of bounds.")
+  }
 }
