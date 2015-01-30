@@ -59,6 +59,22 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     prefix <- paste(prefix, " ")
   }
   
+  # create the first caption number
+  OBJECTS$number <- list()
+  OBJECTS$number[[1]] <- list()
+  
+  for(i in 1:levels){
+    if(missing(type)){
+      OBJECTS$number[[1]][[i]] <- 1
+    } else if(type[i] == "c"){
+      OBJECTS$number[[1]][[i]] <- "a"
+    } else if(type[i] == "C"){
+      OBJECTS$number[[1]][[i]] <- "A"
+    } else{
+      OBJECTS$number[[1]][[i]] <- 1
+    }
+  }
+  
   # force the parameter values for use in the return function
   force(levels)  
   force(prefix)
