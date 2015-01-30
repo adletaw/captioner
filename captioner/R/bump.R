@@ -11,7 +11,7 @@
 #' @details Normally captioner only increments the final number in your figure number, even if you have
 #' hierarchical numbering (e.g. Fig 1.1.1).  This function will bump up any of the penultimate
 #' numbers of your choice using a given index.  You can use it at the start of a section, for example,
-#' to shift from Fig 1.5 to Fig 2.1.#' 
+#' to shift from Fig 1.5 to Fig 2.1. 
 #' 
 #' @examples
 #' Create a new captioner object:
