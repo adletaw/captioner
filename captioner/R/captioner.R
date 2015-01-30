@@ -78,20 +78,23 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     
     # check to see if the object name is already stored
     if(any(objects$name == name)) {
-      # find the number associated with the stored name
-      obj_num <- match(name, objects$name)
+      # find the index associated with the stored name
+      obj_ind <- match(name, objects$name)
       
       # find the caption associated with the stored name
       # if the caption is missing, and you supplied one with the current function
       # call, the missing one will be filled in with the new one
-      if(objects$caption[obj_num] == ""){
+      if(objects$caption[obj_ind] == ""){
         # replace empty caption
-        objects$caption[obj_num] <- caption
+        objects$caption[obj_ind] <- caption
       } else {
         # access existing caption
-        caption <- objects$caption[obj_num]
+        caption <- objects$caption[obj_ind]
       }
     } else {
+      # check for an existing object number
+      # add name and caption to index of earliest unassigned number
+      
       # add the object to the local copy of the object vector
       objects$name    <- c(objects$name, name)
       objects$caption <- c(objects$caption, caption)
