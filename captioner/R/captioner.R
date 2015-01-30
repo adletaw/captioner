@@ -43,6 +43,8 @@
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
                       type = NULL, infix = ".")
 {
+  # Internal functions
+  
   # Check the parameter classes
   check_class(prefix,     "character")
   check_class(auto_space, "logical")
