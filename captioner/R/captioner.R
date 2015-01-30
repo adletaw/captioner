@@ -123,7 +123,10 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     
     # assign objects to the parent environment
     assign("OBJECTS", objects, envir = parent.env(environment()))
-        
+    
+    # create display version of object number
+    obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
+    
     # choose between short or long format
     if(!cite) {
       text <- paste0(prefix, obj_num, ": ", caption)
