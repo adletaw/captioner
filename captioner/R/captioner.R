@@ -126,7 +126,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     }  
     else {
       # get the earliest available index
-      obj_ind                  <- length(objects$name) + 1
+      obj_ind <- length(objects$name) + 1
             
       # If there is already a nameless number, none will be added
       # Otherwise the number is incremented
