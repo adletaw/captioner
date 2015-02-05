@@ -18,6 +18,8 @@
 #' 
 #' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
 #' 
+#' \code{num}: Logical indicating whether or not you want to show the figure number only
+#' 
 #' \code{level}: Optional numeric used to bump up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
 #' 
 #' And returns a character string containing the prefix and object number with or without a caption.
@@ -103,7 +105,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   
   ## Create and return the specialized captioning function ---
   
-  function(name, caption = "", cite = FALSE, level = FALSE)
+  function(name, caption = "", cite = FALSE, num = FALSE, level = FALSE)
   {
     ## Error check parameters --
     if(level > levels){
@@ -163,10 +165,12 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
     
     # choose between short or long format
-    if(!cite) {
-      text <- paste0(prefix, obj_num, ": ", caption)
-    } else {
+    if(num) {
+      text <- obj_num
+    } else if(cite) {
       text <- paste0(prefix, obj_num)
+    } else {
+      text <- paste0(prefix, obj_num, ": ", caption)
     }
     
     return(text)

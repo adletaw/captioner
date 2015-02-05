@@ -33,6 +33,8 @@ Captioner generates a function with the following parameters
 
 \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
 
+\code{num}: Logical indicating whether or not you want to show the figure number only
+
 \code{level}: Optional numeric used to bump up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
 
 And returns a character string containing the prefix and object number with or without a caption.
