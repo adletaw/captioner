@@ -14,12 +14,14 @@
 #' to shift from Fig 1.5 to Fig 2.1. 
 #' 
 #' @examples
-#' Create a new captioner object:
+#' \donttest{
+#' # Create a new captioner object:
 #' 
 #' figs <- captioner(levels = 2)
 #' figs("a")
 #' 
 #' bump(figs, 1)
+#' }
 #' 
 #' @seealso \code{\link{captioner}}
 #' 
