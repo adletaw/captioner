@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/<USERNAME>/<REPO>.png?branch=master)](https://travis-ci.org/<USERNAME>/<REPO>)
+[![Build Status](https://travis-ci.org/adletaw/captioner.png?branch=master)](https://travis-ci.org/adletaw/captioner)
 
 *captioner* is an R package for generating figure numbers and captions
 
