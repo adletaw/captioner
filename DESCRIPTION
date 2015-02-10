@@ -8,5 +8,6 @@ Maintainer: Alathea D Letaw <alathea@zoology.ubc.ca>
 Description: Number your figures, tables or any other objects and generate
     captions that are super useful for Rmd documents.
 License: MIT + file LICENSE
-Suggests: knitr
+Suggests:
+    knitr
 VignetteBuilder: knitr
