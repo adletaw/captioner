@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/<USERNAME>/<REPO>.png?branch=master)](https://travis-ci.org/<USERNAME>/<REPO>)
+
 *captioner* is an R package for generating figure numbers and captions
 
 **Current version:** [Betadiversity 2.1](https://github.com/adletaw/captioner/releases/tag/v2.1) (4 February 2015).  Display the figure number with no surrounding text (e.g "1").
