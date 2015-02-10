@@ -7,11 +7,6 @@ vignette: >
   %\VignetteIndexEntry{Using captioner}
 ---
 
-```{r init, echo = FALSE, message = FALSE}
-library(knitr)
-library(ggplot2)
-```
-
 # Using captioner
 
 `captioner` is a lightweight R package that allows you to store figure and table captions and print them later.  It also automatically numbers the captions so that you don't have to renumber each time you rearrange them.  This is particularly useful for [R markdown documents](http://rmarkdown.rstudio.com/), which do not currently automatically number captions.
