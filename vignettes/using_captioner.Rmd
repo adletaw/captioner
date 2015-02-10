@@ -127,17 +127,11 @@ fig_nums("snuff", "Average size of snuff boxes used from 1808 to 1908.")
 fig_nums("bounce", cite = TRUE)
 ```
 
-If you find the code for citing particularly cumbersome, you can shorten it by using `partial` from the package `pryr`.  This allows you to preemptively fill in some of the parameters of your `captioner()` function:
+If you find the code for citing particularly cumbersome, you can shorten it by using `partial` from the package `pryr`.  This allows you to preemptively fill in some of the parameters of your `captioner()` function.
 
-```{r pryr}
-library(pryr)
+For example: `citef <- partial(fig_nums, cite = T)`
 
-citef <- partial(fig_nums, cite = T)
-citef("bounce")
-
-citet <- partial(table_nums, cite = T)
-citet("iris")
-```
+Then: `citef("bounce")`
 
 ### Implementing hierarchical numbering
 
