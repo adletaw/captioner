@@ -5,6 +5,11 @@
 \usage{
 check_class(.param, .class)
 }
+\arguments{
+\item{.param}{The object that you want to check the class of}
+
+\item{.class}{The expected class for \code{.param}}
+}
 \description{
 Check the class of an input parameter
 }

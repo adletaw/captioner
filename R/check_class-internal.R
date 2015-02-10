@@ -1,5 +1,8 @@
 #' Check the class of an input parameter
 #' 
+#' @param .param The object that you want to check the class of
+#' @param .class The expected class for \code{.param}
+#' 
 #' @export
 
 check_class <- function(.param, .class){

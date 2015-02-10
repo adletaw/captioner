@@ -5,6 +5,11 @@
 \usage{
 increment(values, level)
 }
+\arguments{
+\item{values}{The list of figure numbers that need to be incremented}
+
+\item{level}{Which number should be incremented}
+}
 \description{
 Increment function, for incrementing a hierarchical number
 }

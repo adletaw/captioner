@@ -1,5 +1,8 @@
 #' Increment function, for incrementing a hierarchical number
 #' 
+#' @param values The list of figure numbers that need to be incremented
+#' @param level Which number should be incremented
+#' 
 #' @export
 
 increment <- function(values, level)
