@@ -28,24 +28,24 @@
 #' beginning of the list, becoming "Figure 1".
 #' 
 #' @examples
-#' Create a new captioner object:
+#' # Create a new captioner object:
 #' 
 #' fig_nums <- captioner()
 #' 
-#' Store a caption with the key word "flower_plot". Print the caption
-#' including the figure number:
+#' # Store a caption with the key word "flower_plot". Print the caption
+#' # including the figure number:
 #' 
 #' fig_nums("flower_plot", "This plot shows the distribution of flower colors")
 #' 
-#' Cite the figure e.g. "Figure 1", using the key word:
+#' # Cite the figure e.g. "Figure 1", using the key word:
 #' 
 #' fig_nums("flower_plot", cite = TRUE)
 #' 
-#' Now you can print the caption any time using the designated key:
+#' # Now you can print the caption any time using the designated key:
 #' 
 #' fig_nums("flower_plot")
 #'
-#' Create a captioner object with hierarchical numbering:
+#' # Create a captioner object with hierarchical numbering:
 #' 
 #' tables <- captioner(prefix = "Table", levels = 2)
 #' tables("a", "Table of world populations sorted from greatest to least.")
