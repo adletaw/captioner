@@ -1,9 +1,9 @@
 ---
 title: "Using captioner"
-output: pdf_document
+output: rmarkdown::html_vignette
 date: "January 2015"
 vignette: >
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Using captioner}
 ---
 

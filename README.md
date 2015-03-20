@@ -58,7 +58,7 @@ To this:
 
 `> citef("my_pretty_figure")`
 
-Take a look at the [vignette](https://github.com/adletaw/captioner/tree/master/vignettes/using_captioner.pdf) for many more details.
+Take a look at the [vignette](https://github.com/adletaw/captioner/tree/master/vignettes/using_captioner.Rmd) for many more details.
 
 ***
 
