@@ -1,8 +1,8 @@
 Package: captioner
 Type: Package
 Title: Numbers figures and creates simple captions
-Version: 1.1
-Date: 2014-12-01
+Version: 2.1.0
+Date: 2015-03-17
 Author: Alathea D Letaw <alathea@zoology.ubc.ca>
 Maintainer: Alathea D Letaw <alathea@zoology.ubc.ca>
 Description: Number your figures, tables or any other objects and generate
