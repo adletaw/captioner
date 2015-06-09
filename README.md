@@ -11,12 +11,17 @@
 the subdirectory `captioner` contains the package files
 
 to install:
-* `install.packages("devtools")`
-* `devtools::install_github("adletaw/captioner")`
+```r
+if (!require("devtools")) install.packages("devtools") # check if `devtools` is installed
+devtools::install_github("adletaw/captioner")
+```
 
 or if you want the vignette:
-* `devtools::install_github("adletaw/captioner", build_vignettes = TRUE)`
-* `vignette("using_captioner")`
+```r
+if (!require("devtools")) install.packages("devtools") # check if `devtools` is installed
+devtools::install_github("adletaw/captioner", build_vignettes = TRUE)
+vignette("using_captioner")
+```
 
 **Usage**
 
