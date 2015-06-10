@@ -16,7 +16,12 @@
 #' 
 #' \code{caption}: The object caption
 #' 
-#' \code{display}: Character string (or logical) indicating what display mode you would like: "full" or "f" is the default and shows the entire caption with prefix and number; "cite" or "c" displays just the prefix and number, without the caption; "num" or "n" displays just the number
+#' \code{display}: Character string (or logical) indicating what display mode you would like:
+#' \itemize{
+#' \item "full" or "f" is the default and shows the entire caption with prefix and number
+#' \item "cite" or "c" displays just the prefix and number, without the caption
+#' \item "num" or "n" displays just the number
+#' }
 #'
 #' \code{level}: Optional numeric used to "bump" up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
 #'   
@@ -39,7 +44,7 @@
 #' fig_nums("flower_plot", "This plot shows the distribution of flower colors")
 #' 
 #' # Cite the figure e.g. "Figure 1", using the key word:
-#' fig_nums("flower_plot", cite = TRUE)
+#' fig_nums("flower_plot", display = "cite")
 #' 
 #' # Now you can print the caption any time using the designated key:
 #' fig_nums("flower_plot")
