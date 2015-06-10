@@ -1,4 +1,6 @@
 ^\.travis\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-cran-comments.md
+^\.gitignore$
+^\.Rhistory$
+^cran-comments\.md$
