@@ -16,9 +16,10 @@
 #' 
 #' \code{caption}: The object caption
 #' 
-#' \code{cite}: Logical indicating whether or not you would like to generate a short form to use for in-text citation
-#' 
-#' \code{num}: Logical indicating whether or not you want to show the figure number only
+#' \code{display}: Character string (or logical) indicating what display mode you would like:
+#' "full" or "f" is the default and shows the entire caption with prefix and number
+#' "cite" or "c" displays just the prefix and number, without the caption
+#' "num" or "n" displays just the number
 #' 
 #' \code{level}: Optional numeric used to bump up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
 #' 
