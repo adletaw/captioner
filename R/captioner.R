@@ -104,7 +104,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   
   ## Create and return the specialized captioning function ---
   
-  function(name, caption = "", display = "full", level = FALSE)
+  function(name, caption = "", display = "full", level = FALSE, cite = FALSE, num = FALSE)
   {
     ## Error check parameters --
     if(level > levels){
@@ -164,6 +164,18 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
     
     # choose display format and return
+    
+    # for backwards compatibility, use the cite and num options first
+    if(cite){
+      .Deprecated("display")
+      return(paste0(prefix, obj_num))
+    }
+    
+    if(num){
+      .Deprecated("display")
+      return(obj_num)
+    }
+    
     if(display == FALSE)
     {
       return(invisible())
