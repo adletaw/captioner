@@ -1,7 +1,7 @@
 ---
 title: "Using captioner"
 output: rmarkdown::html_vignette
-date: "January 2015"
+date: "June 2015"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Using captioner}
@@ -22,12 +22,12 @@ install.packages("devtools")
 Now install `captioner`:
 
 ```{r captioner, eval = FALSE}
-devtools::install_github("adletaw/captioner/captioner")
+devtools::install_github("adletaw/captioner")
 ```
 
 ## Usage
 
-Currently, the only function within `captioner` is `captioner()`.  A call to this function will return a new function that you can then use to create and store your captions.  This allows you to create a new function for each set of figures, tables, or any other things that you want to number separately.
+The main function within `captioner` is `captioner()`.  A call to this function will return a new function that you can then use to create and store your captions.  This allows you to create a new function for each set of figures, tables, or any other things that you want to number separately.
 
 ### Creating your first set of captions
 
@@ -39,7 +39,15 @@ library(captioner)
 table_nums <- captioner(prefix = "Table")
 ```
 
-The function, `table_nums` takes 3 arguments: a key word to describe your table, a caption, and a logical indicating whether or not you are generating a citation.  A citation generates only the prefix and table number, whereas the normal behavior is to also display the caption.  The default behavior is to generate the full caption.
+The function, `table_nums` takes 4 arguments: a key word to describe your table (`name`), a caption (`caption`), a character string (or logical) to set the display mode (`display`), and a logical (`level`) related to hierarchical numbering (discussed below).  The display options are:
+
+*  `full` or `f` (default): Display the caption with prefix and number
+
+*  `cite` or `c`: Display the prefix and number only
+
+*  `num` or `n`: Display the number only
+
+*  `FALSE`: Do not display anything
 
 Now you can create your first caption:
 
@@ -102,34 +110,34 @@ table_nums("dolphins", "List of dolphin species and their brain sizes.")
 
 ### Citing
 
-Other than displaying full captions, you probably will also want to cite your figures and tables, without the caption, in your text.  You can do this by setting the `cite` argument to `TRUE`.
+Other than displaying full captions, you probably will also want to cite your figures and tables, without the caption, in your text.  You can do this by setting the `display` argument to `cite`.
 
 ```{r cite}
-fig_nums("milk_fat", cite = TRUE)
+fig_nums("milk_fat", display = "cite")
 ```
 
 This works particularly well using an inline code chunk:
 
 ```{r cite_2, eval = F}
-"There was no significant trend in milk fat between gramnivores" (`r fig_nums("milk_fat", cite = TRUE)`).
+"There was no significant trend in milk fat between gramnivores" (`r fig_nums("milk_fat", display = "cite")`).
 ```
 
 Which looks like:
 
-There was no significant trend in milk fat between gramnivores (`r fig_nums("milk_fat", cite = TRUE)`).
+There was no significant trend in milk fat between gramnivores (`r fig_nums("milk_fat", display = "cite")`).
 
 It is possible that you will want to cite the figure before actually displaying the figure.  This is not a problem, you can create the citation with or without a caption, and `captioner` will automatically figure out the numbering.  The numbering is designated the first time a figure with that keyword is encountered, whether it's a citation or a full caption.
 
 ```{r cite_3}
-fig_nums("snuff", cite = TRUE)
+fig_nums("snuff",  display = "cite")
 fig_nums("bounce", "Bounce height (cm) of balls made of various types of rubber.")
-fig_nums("snuff", "Average size of snuff boxes used from 1808 to 1908.")
-fig_nums("bounce", cite = TRUE)
+fig_nums("snuff",  "Average size of snuff boxes used from 1808 to 1908.")
+fig_nums("bounce", display = "cite")
 ```
 
-If you find the code for citing particularly cumbersome, you can shorten it by using `partial` from the package `pryr`.  This allows you to preemptively fill in some of the parameters of your `captioner()` function.
+If you find the code for citing cumbersome, you can shorten it by using `partial` from the package `pryr`.  This allows you to preemptively fill in some of the parameters of your `captioner()` function.
 
-For example: `citef <- partial(fig_nums, cite = T)`
+For example: `citef <- partial(fig_nums, display = "cite")`
 
 Then: `citef("bounce")`
 
@@ -147,7 +155,7 @@ The three new parameters tell `captioner` how many subsets of numbers you want (
 Normally, a call to `figs_2` will only increment the final number or character in your figure number.  If you want to increment an earlier value, there are two ways.  First, you can set the parameter `level` inside of `figs_2`.  `level` gives the number corresponding to which value you want incremented.  For example, if you want to bump up from `1.1.1` to `1.2.1`:
 
 ```{r hierarchy_2}
-figs_2("B", cite = T, level = 2)
+figs_2("B", display = "cite", level = 2)
 ```
 
 The second way to do this is to use the function `bump`, introduced in `captioner` version 2.0.  If you have a document with many chapters or sections, `bump` may be more convenient because it is not connected to a specific figure.  Instead, you can place it after your section heading, and all subsequent figures will have the bumped up numbering.
