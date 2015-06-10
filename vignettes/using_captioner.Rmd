@@ -85,6 +85,15 @@ Which looks like:
 
 And is as good as what the `fig.cap` command will do for you.
 
+#### Defining captions without displaying them
+
+If you want to store a caption without displaying it, perhaps to change the numbering, you can do this by setting the `display` option to `FALSE`:
+
+```{r no_display}
+table_nums("peony", display = FALSE)
+```
+
+
 ### Creating your second set of captions
 
 Now suppose you not only have a set of tables, but also a set of figures.  You don't want the numbering of the two to get mixed up, and you also don't want all of your figures to have the "Table" prefix.  All you need to do is create a new `captioner()` function:
