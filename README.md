@@ -2,13 +2,11 @@
 
 *captioner* is an R package for generating figure numbers and captions
 
-**Current version:** [Betadiversity 2.1](https://github.com/adletaw/captioner/releases/tag/v2.1) (4 February 2015).  Display the figure number with no surrounding text (e.g "1").
+**Current version:** [Betadiversity 2.2.0](https://github.com/adletaw/captioner/releases/tag/v2.2.0) (10 June 2015).  Define captions without display.  Some parameters deprecated since previous version.
 
-**Previous version:** [Betadiversity 2.0](https://github.com/adletaw/captioner/releases/tag/v2.0) (30 January 2015).  Hierarchical numbering (e.g. Figure 1.1).
+**Previous version:** [Betadiversity 2.1.0](https://github.com/adletaw/captioner/releases/tag/v2.1) (4 February 2015).  Display the figure number with no surrounding text (e.g "1").
 
 **Installation**
-
-the subdirectory `captioner` contains the package files
 
 to install:
 * `install.packages("devtools")`
@@ -30,7 +28,7 @@ For example:
 
 "Figure 1: my pretty figure's caption"
 
-`> fig_nums("my_pretty_figure", cite = TRUE)`
+`> fig_nums("my_pretty_figure", display = "cite")`
 
 "Figure 1"
 
@@ -48,11 +46,11 @@ If you create a new set of captions, perhaps for your tables, the numbering rest
 
 You can abbreviate in text citations by using `partial`<sup>1</sup> from the package `pryr` to create a shorter version of the function.  For example:
 
-`> citef <- partial(fig_nums, cite = TRUE)`
+`> citef <- partial(fig_nums, display = "cite")`
 
 Now you can shorten this:
 
-`> fig_nums("my_pretty_figure", cite = TRUE)`
+`> fig_nums("my_pretty_figure", display = "cite")`
 
 To this:
 
