@@ -167,12 +167,12 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     
     # for backwards compatibility, use the cite and num options first
     if(cite){
-      .Deprecated("display")
+      .Deprecated(new = "display", old = "cite")
       return(paste0(prefix, obj_num))
     }
     
     if(num){
-      .Deprecated("display")
+      .Deprecated(new = "display", old = "num")
       return(obj_num)
     }
     
