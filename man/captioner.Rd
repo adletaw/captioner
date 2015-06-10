@@ -50,23 +50,12 @@ is modified based on the citations you use.  The first figure to be cited will b
 beginning of the list, becoming "Figure 1".
 }
 \examples{
-\donttest{
-# Create a new captioner object:
 fig_nums <- captioner()
-
-# Store a caption with the key word "flower_plot". Print the caption
-# including the figure number:
 fig_nums("flower_plot", "This plot shows the distribution of flower colors")
-
-# Cite the figure e.g. "Figure 1", using the key word:
 fig_nums("flower_plot", display = "cite")
-
-# Now you can print the caption any time using the designated key:
 fig_nums("flower_plot")
 
-# Create a captioner object with hierarchical numbering:
 tables <- captioner(prefix = "Table", levels = 2)
 tables("a", "Table of world populations sorted from greatest to least.")
-}
 }
 
