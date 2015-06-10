@@ -2,7 +2,7 @@
 
 *captioner* is an R package for generating figure numbers and captions
 
-**Current version:** [Betadiversity 2.2.1](https://github.com/adletaw/captioner/releases/tag/v2.2.1) (10 June 2015).  Temporarily added in deprecated parameters for backwards compatibility.
+**Current version:** [Betadiversity 2.2.2](https://github.com/adletaw/captioner/releases/tag/v2.2.2) (10 June 2015).  Maintains backwards compatibility.
 
 **Previous version:** [Betadiversity 2.2.0](https://github.com/adletaw/captioner/releases/tag/v2.2.0) (10 June 2015).  Define captions without display.  Some parameters deprecated since previous version.
 
