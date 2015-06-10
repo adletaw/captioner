@@ -102,7 +102,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   
   ## Create and return the specialized captioning function ---
   
-  function(name, caption = "", cite = FALSE, num = FALSE, level = FALSE)
+  function(name, caption = "", display = "full", level = FALSE)
   {
     ## Error check parameters --
     if(level > levels){
@@ -161,15 +161,27 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     # create display version of object number
     obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
     
-    # choose between short or long format
-    if(num) {
-      text <- obj_num
-    } else if(cite) {
-      text <- paste0(prefix, obj_num)
-    } else {
-      text <- paste0(prefix, obj_num, ": ", caption)
+    # choose display format and return
+    if(display == FALSE)
+    {
+      return(invisible())
     }
-    
-    return(text)
+    else if(display == "full" || display == "f")
+    {
+      return(paste0(prefix, obj_num, ": ", caption))
+    }
+    else if(display == "cite" || display == "c")
+    {
+      return(paste0(prefix, obj_num))
+    }
+    else if(display == "num"  || display == "n")
+    {
+      return(obj_num)
+    }
+    else
+    {
+      warning("Invalid display mode used.  Caption was still saved.")
+      return(invisible())
+    }
   }
 }
