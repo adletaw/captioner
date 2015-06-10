@@ -16,12 +16,13 @@
 #' 
 #' \code{caption}: The object caption
 #' 
-#' \code{display}: Character string (or logical) indicating what display mode you would like:
-#' "full" or "f" is the default and shows the entire caption with prefix and number
-#' "cite" or "c" displays just the prefix and number, without the caption
-#' "num" or "n" displays just the number
+#' \code{display}: Character string (or logical) indicating what display mode you would like: "full" or "f" is the default and shows the entire caption with prefix and number; "cite" or "c" displays just the prefix and number, without the caption; "num" or "n" displays just the number
+#'
+#' \code{level}: Optional numeric used to "bump" up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
+#'   
+#' \code{cite}: Deprecated.  Please use \code{display}.
 #' 
-#' \code{level}: Optional numeric used to bump up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
+#' \code{num}: Deprecated. Please use \code{display}.
 #' 
 #' And returns a character string containing the prefix and object number with or without a caption.
 #' The initial numbering is determined based on the order of caption creation.  However, this order
