@@ -1,2 +1,5 @@
 # Force line endings to Linux mode
 * text eol=lf
+
+# Set R files to text
+*.R text
