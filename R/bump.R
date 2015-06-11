@@ -1,5 +1,5 @@
 #' Captioner bump function
-#'
+#' 
 #' For figure numbers with sub-values (e.g. 1.1), increment one of the sub-values for use in
 #' the next figure.
 #' 

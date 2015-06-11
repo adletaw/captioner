@@ -3,6 +3,7 @@
 #' @param .param The object that you want to check the class of
 #' @param .class The expected class for \code{.param}
 #' 
+#' @keywords internal
 #' @export
 
 check_class <- function(.param, .class){

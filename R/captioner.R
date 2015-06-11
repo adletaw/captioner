@@ -1,7 +1,7 @@
 #' Captioner function
 #'
 #' Creates a function to create numbered captions for figures, tables or other objects
-#' 
+#'
 #' @param prefix Character string containing text to go before object number.
 #' The default is \emph{Figure}.
 #' @param auto_space Logical indicating whether or not a space should automatically be added

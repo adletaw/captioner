@@ -3,6 +3,7 @@
 #' @param values The list of figure numbers that need to be incremented
 #' @param level Which number should be incremented
 #' 
+#' @keywords internal
 #' @export
 
 increment <- function(values, level)

@@ -14,4 +14,5 @@ check_class(.param, .class)
 \description{
 Check the class of an input parameter
 }
+\keyword{internal}
 
