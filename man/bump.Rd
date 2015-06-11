@@ -25,14 +25,10 @@ numbers of your choice using a given index.  You can use it at the start of a se
 to shift from Fig 1.5 to Fig 2.1.
 }
 \examples{
-\donttest{
-# Create a new captioner object:
-
 figs <- captioner(levels = 2)
 figs("a")
 
 bump(figs, 1)
-}
 }
 \seealso{
 \code{\link{captioner}}

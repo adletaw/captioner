@@ -8,15 +8,21 @@ captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
   infix = ".")
 }
 \arguments{
-\item{prefix}{Character string containing text to go before object number. The default is "Figure".}
+\item{prefix}{Character string containing text to go before object number.
+The default is \emph{Figure}.}
 
-\item{auto_space}{Logical indicating whether or not a space should automatically be added following the prefix.  Space is added by default.}
+\item{auto_space}{Logical indicating whether or not a space should automatically be added
+following the prefix.  Space is added by default.}
 
-\item{levels}{Logical or number indicating whether or not you want hierarchical numbering, and if so, how many levels.  Hierarchical numbering is turned off by default.}
+\item{levels}{Logical or number indicating whether or not you want hierarchical numbering,
+and if so, how many levels.  Hierarchical numbering is turned off by default.}
 
-\item{type}{Vector with same length as `levels` indicating whether figure numbering should be numeric ("n"), lowercase character ("c"), or uppercase character ("C").  If unspecified, `captioner` will revert to all numeric values.}
+\item{type}{Vector with same length as \code{levels} indicating whether figure numbering
+should be numeric (\emph{n}), lowercase character (\emph{c}), or uppercase character (\emph{C}).
+If unspecified, \code{captioner} will revert to all numeric values.}
 
-\item{infix}{Character string containing text to go between figure numbers if hierarchical numbering is on.  Default is "."}
+\item{infix}{Character string containing text to go between figure numbers if hierarchical
+numbering is on.  Default is \emph{.}}
 }
 \value{
 A captioner function.
@@ -33,12 +39,12 @@ Captioner generates a function with the following parameters
 
 \code{display}: Character string (or logical) indicating what display mode you would like:
 \itemize{
-\item "full" or "f" is the default and shows the entire caption with prefix and number
-\item "cite" or "c" displays just the prefix and number, without the caption
-\item "num" or "n" displays just the number
+\item \emph{full} or \emph{f} is the default and shows the entire caption with prefix and number
+\item \emph{cite} or \emph{c} displays just the prefix and number, without the caption
+\item \emph{num} or \emph{n} displays just the number
 }
 
-\code{level}: Optional numeric used to "bump" up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
+\code{level}: Optional numeric used to bump up the numbering if you have hierarchical numbering.  See also \code{\link{bump}}.
 
 \code{cite}: Deprecated.  Please use \code{display}.
 
@@ -47,7 +53,7 @@ Captioner generates a function with the following parameters
 And returns a character string containing the prefix and object number with or without a caption.
 The initial numbering is determined based on the order of caption creation.  However, this order
 is modified based on the citations you use.  The first figure to be cited will be moved to the
-beginning of the list, becoming "Figure 1".
+beginning of the list, becoming \emph{Figure 1}.
 }
 \examples{
 fig_nums <- captioner()
