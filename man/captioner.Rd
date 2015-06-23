@@ -5,7 +5,8 @@
 \title{Captioner function}
 \usage{
 captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
-  infix = ".")
+  infix = ".", link = FALSE,
+  fmt = as.character(knitr::opts_knit$get()[["rmarkdown.pandoc.to"]]))
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number. The default is "Figure".}
@@ -17,6 +18,8 @@ captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
 \item{type}{Vector with same length as `levels` indicating whether figure numbering should be numeric ("n"), lowercase character ("c"), or uppercase character ("C").  If unspecified, `captioner` will revert to all numeric values.}
 
 \item{infix}{Character string containing text to go between figure numbers if hierarchical numbering is on.  Default is "."}
+
+\item{link}{Logical indicating whether you want citations linked to figures for HTML or PDF output. Default is FALSE.}
 }
 \value{
 A captioner function.
@@ -43,6 +46,14 @@ And returns a character string containing the prefix and object number with or w
 The initial numbering is determined based on the order of caption creation.  However, this order
 is modified based on the citations you use.  The first figure to be cited will be moved to the
 beginning of the list, becoming "Figure 1".
+
+If \code{link = TRUE}, then citations are hyperlinked to the referenced
+caption. This only applies when rendering an Rmarkdown document to HTML or
+PDF (see \url{http://rmarkdown.rstudio.com}). For the link to work, the
+caption needs to be output using the option \code{fig_caption: yes} in the
+front matter of the Rmarkdown document. Since for PDF output, figure
+numbering is internally handled, this number gets used over the captioner
+generated number so special use of \code{level} does not get applied.
 }
 \examples{
 \donttest{
@@ -63,5 +74,8 @@ fig_nums("flower_plot")
 tables <- captioner(prefix = "Table", levels = 2)
 tables("a", "Table of world populations sorted from greatest to least.")
 }
+
+# Create a captioner object with links (for HTML or PDF output):
+fig_nums <- captioner(link = TRUE)
 }
 

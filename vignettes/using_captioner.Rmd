@@ -177,3 +177,26 @@ bump(figs_2, level = 1)
 figs_2("C", "The letter C shown in fixed-width fonts.")
 ```
 
+If you want figure numbers with more depth, say if you have a figure with subfigures, or have figure numbers attached to sections, you can implement hierarchical numbering.  This will give you, for example, something like "Figure 1.1.1".
+
+### Linking to Figures / Tables
+
+You may want to link from the citation to the caption for easy reference. For HTML, an HTML anchor `<a name="id"}></a>` is placed before the caption and markdown style internal link `[](#id)` used for the citation.
+
+```{r link_html}
+fig <- captioner(link = TRUE)
+fig("sausage", "Never saw such links!")
+fig("sausage", display = "cite")
+```
+
+For PDF, a [Latex cross-referencing](https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing#Introduction) technique of `\label{id}` and `\ref{id}` are used. 
+
+```{r link_pdf}
+fig <- captioner(link = TRUE, fmt = 'latex')
+fig("sausage", "Never saw such links!")
+fig("sausage", display = "cite")
+```
+
+Since for PDF output figure numbering is internally handled, display of special numbering otherwise defined in the `level` argument is ignored in the citation and caption output PDF. This further handles the duplication of caption labels, such as "Figure 1: Figure 1:" that you would otherwise see when not using the `link = TRUE` option and pdf output.
+
+The output type will be detected from using `rmarkdown::render()`, whether by command or using the Knit dropdown menu when editing an Rmarkdown document in the RStudio IDE (see [rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/). The argument  `fmt` used above is not documented in the captioner function, but used here in the vignette simply to show the different renderings of the intermediary markdown document before being passed along to [pandoc](http://pandoc.org).
