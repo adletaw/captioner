@@ -179,7 +179,7 @@ figs_2("C", "The letter C shown in fixed-width fonts.")
 
 If you want figure numbers with more depth, say if you have a figure with subfigures, or have figure numbers attached to sections, you can implement hierarchical numbering.  This will give you, for example, something like "Figure 1.1.1".
 
-### Linking to Figures / Tables
+### Linking from Citation to Caption in HTML or PDF
 
 You may want to link from the citation to the caption for easy reference. For HTML, an HTML anchor `<a name="id"}></a>` is placed before the caption and markdown style internal link `[](#id)` used for the citation.
 
@@ -199,4 +199,4 @@ fig("sausage", display = "cite")
 
 Since for PDF output figure numbering is internally handled, display of special numbering otherwise defined in the `level` argument is ignored in the citation and caption output PDF. This further handles the duplication of caption labels, such as "Figure 1: Figure 1:" that you would otherwise see when not using the `link = TRUE` option and pdf output.
 
-The output type will be detected from using `rmarkdown::render()`, whether by command or using the Knit dropdown menu when editing an Rmarkdown document in the RStudio IDE (see [rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/). The argument  `fmt` used above is not documented in the captioner function, but used here in the vignette simply to show the different renderings of the intermediary markdown document before being passed along to [pandoc](http://pandoc.org).
+The output type will be detected from using `rmarkdown::render()`, whether by command or using the Knit dropdown menu when editing an Rmarkdown document in the RStudio IDE (see [rmarkdown.rstudio.com](http://rmarkdown.rstudio.com/)). The argument  `fmt` used above is not documented in the captioner function, but used here in the vignette simply to show the different renderings of the intermediary markdown document before being passed along to [pandoc](http://pandoc.org).

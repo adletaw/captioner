@@ -65,7 +65,7 @@
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
                       type = NULL, infix = ".", 
-                      link = FALSE, fmt = as.character(knitr::opts_knit$get()[['rmarkdown.pandoc.to']]))
+                      link = FALSE, fmt = knitr::opts_knit$get()[['rmarkdown.pandoc.to']])
 {
   ## Make sure all of the parameters are setup correctly ---
   
