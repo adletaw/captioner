@@ -188,7 +188,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
       s_cite    = sprintf('[%s%s](#%s)', prefix, obj_num, ref)
       s_num     = sprintf('[%s](#%s)', obj_num, ref)
     } else {
-      s_display = paste0(prefix, obj_num, ": ", caption, ' OTHER FORMAT: ', fmt)
+      s_display = paste0(prefix, obj_num, ": ", caption)
       s_cite    = paste0(prefix, obj_num)
       s_num     = obj_num
     }
