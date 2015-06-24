@@ -7,6 +7,7 @@
 #' @param levels Logical or number indicating whether or not you want hierarchical numbering, and if so, how many levels.  Hierarchical numbering is turned off by default.
 #' @param type Vector with same length as `levels` indicating whether figure numbering should be numeric ("n"), lowercase character ("c"), or uppercase character ("C").  If unspecified, `captioner` will revert to all numeric values.
 #' @param infix Character string containing text to go between figure numbers if hierarchical numbering is on.  Default is "."
+#' @param link Logical indicating whether you want citations linked to figures for HTML or PDF output. Default is FALSE.
 #' 
 #' @return A captioner function.
 #' 
@@ -29,6 +30,14 @@
 #' is modified based on the citations you use.  The first figure to be cited will be moved to the
 #' beginning of the list, becoming "Figure 1".
 #' 
+#' If \code{link = TRUE}, then citations are hyperlinked to the referenced
+#' caption. This only applies when rendering an Rmarkdown document to HTML or
+#' PDF (see \url{http://rmarkdown.rstudio.com}). For the link to work, the
+#' caption needs to be output using the option \code{fig_caption: yes} in the
+#' front matter of the Rmarkdown document. Since for PDF output, figure
+#' numbering is internally handled, this number gets used over the captioner
+#' generated number so special use of \code{level} does not get applied.
+#' 
 #' @examples
 #' \donttest{
 #' # Create a new captioner object:
@@ -48,11 +57,15 @@
 #' tables <- captioner(prefix = "Table", levels = 2)
 #' tables("a", "Table of world populations sorted from greatest to least.")
 #' }
+#' 
+#' # Create a captioner object with links (for HTML or PDF output):
+#' fig_nums <- captioner(link = TRUE)
 #'   
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".")
+                      type = NULL, infix = ".", 
+                      link = FALSE, fmt = knitr::opts_knit$get()[['rmarkdown.pandoc.to']])
 {
   ## Make sure all of the parameters are setup correctly ---
   
@@ -163,17 +176,34 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     # create display version of object number
     obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
     
+    # get display output format from running rmarkdown::render()
+    ref = stringr::str_replace_all(sprintf('%s_%s', prefix, obj_num), ' ', '')
+    if (link & fmt == 'latex'){
+      # note that prefix is dropped for PDF output since automatically handles this
+      s_display = sprintf('%s\\label{%s}', caption, ref)
+      s_cite    = sprintf('%s\\ref{%s}', prefix, ref)
+      s_num     = sprintf('\\ref{%s}', ref)
+    } else if (link & fmt == 'html'){
+      s_display = sprintf('<a name="%s"}></a>%s%s: %s', ref, prefix, obj_num, caption)
+      s_cite    = sprintf('[%s%s](#%s)', prefix, obj_num, ref)
+      s_num     = sprintf('[%s](#%s)', obj_num, ref)
+    } else {
+      s_display = paste0(prefix, obj_num, ": ", caption)
+      s_cite    = paste0(prefix, obj_num)
+      s_num     = obj_num
+    }
+    
     # choose display format and return
     
     # for backwards compatibility, use the cite and num options first
     if(cite){
       .Deprecated(new = "display", old = "cite")
-      return(paste0(prefix, obj_num))
-    }
+      return(s_cite)
+     }
     
     if(num){
       .Deprecated(new = "display", old = "num")
-      return(obj_num)
+      return(s_num)
     }
     
     if(display == FALSE)
@@ -182,15 +212,15 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     }
     else if(display == "full" || display == "f")
     {
-      return(paste0(prefix, obj_num, ": ", caption))
+      return(s_display)
     }
     else if(display == "cite" || display == "c")
     {
-      return(paste0(prefix, obj_num))
+      return(s_cite)
     }
     else if(display == "num"  || display == "n")
     {
-      return(obj_num)
+      return(s_num)
     }
     else
     {
