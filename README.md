@@ -5,7 +5,7 @@
 
 **Installation**
 
-to install:
+*captioner* is now available on CRAN. If you would like to install the current development version:
 
 -   `install.packages("devtools")`
 -   `devtools::install_github("adletaw/captioner")`
