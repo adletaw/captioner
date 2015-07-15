@@ -32,7 +32,7 @@ Added capability to display the figure number without any surrounding text using
 
 ## Major changes
 
-Added the capability to do hierarchical numbering (e.g. Figure 1.1.1). (#11)
+Added the capability to do hierarchical numbering (e.g. Figure 1.1.1). (#8, #11)
 
 # captioner 1.2
 
