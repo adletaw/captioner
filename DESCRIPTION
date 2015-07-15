@@ -5,8 +5,10 @@ Version: 2.2.3
 Date: 2015-07-15
 Author: Alathea D Letaw <alathea@zoology.ubc.ca>
 Maintainer: Alathea D Letaw <alathea@zoology.ubc.ca>
-Description: Number your figures, tables or any other objects and generate
-    captions that are super useful for Rmd documents.
+Description: Captioner provides a method for automatically numbering figures,
+    tables, or other objects.  Captions can be displayed in full, or as citations.
+    This is especially useful for adding figures and tables to R markdown
+    documents without having to numbering them manually.
 License: MIT + file LICENSE
 Suggests:
     knitr
