@@ -3,8 +3,9 @@ Type: Package
 Title: Numbers Figures and Creates Simple Captions
 Version: 2.2.3
 Date: 2015-07-15
-Author: Alathea D Letaw <alathea@zoology.ubc.ca>
-Maintainer: Alathea D Letaw <alathea@zoology.ubc.ca>
+Authors@R: person("Letaw", "Alathea", email = "alathea@zoology.ubc.ca", role = c("aut", "cre"))
+URL: https://github.com/adletaw/captioner
+BugReports: https://github.com/adletaw/captioner/issues
 Description: Captioner provides a method for automatically numbering figures,
     tables, or other objects.  Captions can be displayed in full, or as citations.
     This is especially useful for adding figures and tables to R markdown
