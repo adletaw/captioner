@@ -9,6 +9,12 @@ before_install:
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
 
+env:
+  global:
+    - WARNINGS_ARE_ERRORS=1
+    - R_BUILD_ARGS=--no-manual
+    - R_CHECK_ARGS=--no-manual --as-cran
+
 install:
   - ./travis-tool.sh install_deps
 
