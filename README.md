@@ -23,8 +23,8 @@ For example, you can generate a full caption:
 
 ``` r
 fig_nums <- captioner()
-fig_nums("my_pretty_figure", "my pretty figure's caption")
-#> [1] "Figure  1: my pretty figure's caption"
+fig_nums("my_pretty_figure", "My pretty figure's caption.")
+#> [1] "Figure  1: My pretty figure's caption."
 ```
 
 Or a figure number for citing:
@@ -37,7 +37,9 @@ fig_nums("my_pretty_figure", display = "cite")
 Or you can store the caption and use it in your R code chunk in markdown documents:
 
 ``` r
-my_first_caption <- fig_nums("my pretty_figure", "My pretty figure's caption.")
+my_first_caption <- fig_nums("my_other_figure", "My other figure's caption.")
+my_first_caption
+#> [1] "Figure  2: My other figure's caption."
 ```
 
 If you create a new set of captions, perhaps for your tables, the numbering restarts:
