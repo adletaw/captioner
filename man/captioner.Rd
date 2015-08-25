@@ -5,7 +5,7 @@
 \title{Captioner function}
 \usage{
 captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
-  infix = ".")
+  infix = ".", css_class = NULL)
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number.
@@ -23,6 +23,9 @@ If unspecified, \code{captioner} will revert to all numeric values.}
 
 \item{infix}{Character string containing text to go between figure numbers if hierarchical
 numbering is on.  Default is \emph{.}}
+
+\item{css_class}{Assign a css class to the caption. Places the caption into
+a span html element with a class.}
 }
 \value{
 A captioner function.

@@ -13,6 +13,8 @@
 #' If unspecified, \code{captioner} will revert to all numeric values.
 #' @param infix Character string containing text to go between figure numbers if hierarchical
 #' numbering is on.  Default is \emph{.}
+#' @param css_class Assign a css class to the caption. Places the caption into 
+#' a span html element with a class.
 #' 
 #' @return A captioner function.
 #' 
@@ -52,7 +54,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".")
+                      type = NULL, infix = ".", css_class = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
   
@@ -182,7 +184,14 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     }
     else if(display == "full" || display == "f")
     {
-      return(paste0(prefix, obj_num, ": ", caption))
+      cap.text <- paste0(prefix, obj_num, ": ", caption)
+      if (!is.null(css_class))
+      {
+        cap.text <- paste0("<span class=\"", 
+                           css_class, "\">", cap.text, 
+                           "</span>")
+      }
+      return(cap.text)
     }
     else if(display == "cite" || display == "c")
     {
