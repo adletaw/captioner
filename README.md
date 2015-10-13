@@ -3,6 +3,8 @@
 
 *captioner* is an R package for generating figure numbers and captions
 
+**October 2015: New versions of captioner are on hold until I finish my dissertation.**
+
 **Installation**
 
 *captioner* is now available on CRAN. If you would like to install the current development version:
