@@ -13,6 +13,16 @@
 #' If unspecified, \code{captioner} will revert to all numeric values.
 #' @param infix Character string containing text to go between figure numbers if hierarchical
 #' numbering is on.  Default is \emph{.}
+#' @param format Character string that specifies the markdown format for the figure caption. 
+#' Posible values are:
+#' \itemize{
+#' \item \emph{none}: normal face text
+#' \item \emph{bold} or \emph{b}: bold face text
+#' \item \emph{italic} or \emph{i}: italic face text
+#' \item \emph{bold-italic} or \emph{bi}: bold-italic face text
+#' }
+#' Default is \emph{none}
+#' 
 #' 
 #' @return A captioner function.
 #' 
@@ -52,7 +62,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".")
+                      type = NULL, infix = ".", format = "none")
 {
   ## Make sure all of the parameters are setup correctly ---
   
@@ -61,6 +71,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   check_class(auto_space, "logical")
   check_class(levels,     "numeric")
   check_class(infix,      "character")
+  check_class(format,     "character")
   
   # Check "type" vector
   
@@ -79,22 +90,43 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     stop("Invalid 'type' value used.  Expecting 'n', 'c', or 'C'.")
   }
   
+  if(!all(format %in% c("none", "b", "i", "bi", "bold", "italic", "bold-italic"))){
+    stop("Invalid 'format' value used.  Expecting 'b', 'i', 'bi', 'bold', 'italic'
+         , 'bold-italic'.")
+  }
+  
+  
   # Add a space after the prefix if auto_space is on
   if(auto_space){
     prefix <- paste(prefix, " ")
   }
   
+  # Match the format to markdown
+  
+  format <- switch(format,
+                   "none" = "",
+                   "b" = "**",
+                   "bold" = "**",
+                   "i" = "*",
+                   "italic" = "*",
+                   "bi" = "***",
+                   "bold-italic" = "***"
+  )
+  
   # Force the parameter values for use in the return function
   force(levels)  
   force(prefix)
   force(infix)
+  force(format)
   
   ## Create the OBJECT list ---
   
   # Create a list to store object names, captions, and numbers
   OBJECTS <- list("name"    = NULL,
                   "caption" = NULL,
-                  "number"  = list(list()))
+                  "number"  = list(list()),
+                  "format" = NULL
+                  )
   
   # Assign the first caption number
   # Note that extra values of "type" are ignored by looping over "levels"
@@ -102,6 +134,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   OBJECTS$number[[1]][which(type == "c")] <- "a"
   OBJECTS$number[[1]][which(type == "C")] <- "A"
   
+
   ## Create and return the specialized captioning function ---
   
   function(name, caption = "", display = "full", level = FALSE, cite = FALSE, num = FALSE)
@@ -182,7 +215,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     }
     else if(display == "full" || display == "f")
     {
-      return(paste0(prefix, obj_num, ": ", caption))
+      return(paste0(format, prefix, obj_num, format, ": ", caption))
     }
     else if(display == "cite" || display == "c")
     {
