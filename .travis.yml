@@ -10,7 +10,6 @@ before_install:
 r_github_packages:
   - rstudio/rmarkdown
   - jimhester/covr
-  - yihui/knitr
 
 env:
   global:
