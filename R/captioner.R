@@ -58,7 +58,10 @@
 #'
 #' tables <- captioner(prefix = "Table", levels = 2)
 #' tables("a", "Table of world populations sorted from greatest to least.")
-#'   
+#' 
+#' fig_nums_bold <- captioner(format = "bold")
+#' fig_nums_bold("some_plot", "This label has the prefix and number in bold")
+#'
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
