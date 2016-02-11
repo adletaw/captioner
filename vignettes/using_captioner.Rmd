@@ -3,7 +3,7 @@ title: "Using captioner"
 output: rmarkdown::html_vignette
 date: "June 2015"
 vignette: >
-  %\VignetteEngine{rmarkdown::render}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Using captioner}
 ---
 
