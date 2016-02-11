@@ -15,6 +15,7 @@ License: MIT + file LICENSE
 Depends:
     R (>= 3.1.2)
 Suggests:
-    knitr
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
