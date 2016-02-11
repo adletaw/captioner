@@ -1,9 +1,10 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+Status update (February 2016): *captioner* development is on hold until I finish some PhD things. Development should resume late February/March 2016
+====================================================================================================================================================
+
 [![Build Status](https://travis-ci.org/adletaw/captioner.png?branch=master)](https://travis-ci.org/adletaw/captioner) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/captioner)](http://cran.r-project.org/package=captioner) [![Coverage Status](https://coveralls.io/repos/adletaw/captioner/badge.svg?branch=master&service=github)](https://coveralls.io/github/adletaw/captioner?branch=master)
 
 *captioner* is an R package for generating figure numbers and captions
-
-**October 2015: New versions of captioner are on hold until I finish my dissertation.**
 
 **Installation**
 
