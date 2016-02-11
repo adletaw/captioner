@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 library(captioner)
 ```
 
-# Status update (February 2016): *captioner* development is on hold until I finish some PhD things.  Development should resume late February/March 2016
+### Status update (February 2016): *captioner* development is on hold until I finish some PhD things.  Development should resume late February/March 2016
 
 [![Build Status](https://travis-ci.org/adletaw/captioner.png?branch=master)](https://travis-ci.org/adletaw/captioner)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/captioner)](http://cran.r-project.org/package=captioner)
