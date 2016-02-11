@@ -15,4 +15,4 @@ License: MIT + file LICENSE
 Depends: R (>= 3.1.2)
 Suggests:
     knitr
-VignetteBuilder: knitr
+VignetteBuilder: rmarkdown
