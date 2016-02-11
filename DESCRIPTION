@@ -17,5 +17,5 @@ Depends:
 Suggests:
     knitr,
     rmarkdown
-VignetteBuilder: knitr
+VignetteBuilder: rmarkdown
 RoxygenNote: 5.0.1
