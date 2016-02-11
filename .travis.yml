@@ -18,6 +18,7 @@ env:
     - R_CHECK_ARGS=--no-manual --as-cran
 
 install:
+  - ./travis-tool.sh r_binary_install knitr
   - ./travis-tool.sh install_deps
 
 script: ./travis-tool.sh run_tests
