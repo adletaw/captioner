@@ -12,7 +12,9 @@ Description: Provides a method for automatically numbering figure or table
     This is especially useful for adding figures and tables to R markdown
     documents without having to number them manually.
 License: MIT + file LICENSE
-Depends: R (>= 3.1.2)
+Depends:
+    R (>= 3.1.2)
 Suggests:
     knitr
 VignetteBuilder: rmarkdown
+RoxygenNote: 5.0.1
