@@ -13,6 +13,8 @@
 #' If unspecified, \code{captioner} will revert to all numeric values.
 #' @param infix Character string containing text to go between figure numbers if hierarchical
 #' numbering is on.  Default is \emph{.}
+#' @param before Logical indicating whether to display the caption before or after the
+#' figure.  Applies only to automatic caption display (e.g. with a hook).
 #' @param knitr A list of display options for knitr.
 #' 
 #' @return A captioner function.
@@ -53,7 +55,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".", knitr = NULL)
+                      type = NULL, infix = ".", before = FALSE, knitr = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
   
