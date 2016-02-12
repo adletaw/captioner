@@ -6,6 +6,16 @@ Added a hook to automatically display figure captions using the chunk name
 to find the caption.  Other chunk options can be set inside the call to
 `captioner()`.
 
+To use the hook, the name of your chunk must be identical to the name of the
+caption that you want to display.  Also, you must add the option `cap = X`
+where `X` is the name of your `captioner()` function.
+
+The new parameters `before` and `knitr_op` were also added to `captioner()`.
+`before` allows you to determine whether to display the caption before
+(`before = TRUE`) or after (`before = FALSE`) when using automatic caption
+display. `knitr_op` takes a named list containing any other chunk options that
+you want to keep constant across all captioned chunks.
+
 # captioner 2.2.3
 
 ## Minor changes
