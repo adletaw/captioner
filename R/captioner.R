@@ -155,6 +155,12 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
         }
       }
       
+      # Generate a warning if the caption is empty (only occurs on the initial
+      # creation of the object)
+      if(caption == ""){
+        warning("No caption supplied.")
+      }
+      
       # store the object name and caption at the current index
       objects$name[obj_ind]    <- name
       objects$caption[obj_ind] <- caption
