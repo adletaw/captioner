@@ -19,7 +19,7 @@
 ## a new captioner function is created.  Formatting can be set on that first
 ## call.  Formatting settings are specific to the captioner function so each
 ## one can have different formatting.
-cap_knitr <- function(before = FALSE)
+cap_knitr <- function(where = "after")
 {
   knitr::knit_hooks$set(cap = function(before, options) {
 
@@ -32,13 +32,19 @@ cap_knitr <- function(before = FALSE)
     
     ## Get the display preferences based on the function name.
     ## These must be in the environment in which the function was created.
+    chunk_opts <- get("KNITR", envir = environment(get(cap_function)))
+    print(chunk_opts)
     
-    if(!before){
-      ## Return the caption
-      return(get(cap_function)(cap_name))
+    if(where == "after"){
+      if(!before){
+        ## Return the caption
+        return(get(cap_function)(cap_name))
+      }
     } else {
-      ## Return the caption
-      return(get(cap_function)(cap_name))
+      if(before){
+        ## Return the caption
+        return(get(cap_function)(cap_name))
+      }
     }
   })
 }

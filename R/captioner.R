@@ -55,7 +55,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".", before = FALSE, knitr = NULL)
+                      type = NULL, infix = ".", before = FALSE, knitr_op = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
   
@@ -105,8 +105,17 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   OBJECTS$number[[1]][which(type == "c")] <- "a"
   OBJECTS$number[[1]][which(type == "C")] <- "A"
   
-  ## Formatting
-  cap_knitr(before = before)
+  ## Formatting --
+  
+  # Display before or after the figure
+  if(before){
+    cap_knitr(where = "before")
+  } else {
+    cap_knitr(where = "after")
+  }
+  
+  # Set knitr options
+  KNITR <- knitr_op
   
   ## Create and return the specialized captioning function ---
   function(name, caption = "", display = "full", level = FALSE, cite = FALSE, 
