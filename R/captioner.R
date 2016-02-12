@@ -52,7 +52,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".")
+                      type = NULL, infix = ".", knitr = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
   
