@@ -103,7 +103,6 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   OBJECTS$number[[1]][which(type == "C")] <- "A"
   
   ## Create and return the specialized captioning function ---
-  
   function(name, caption = "", display = "full", level = FALSE, cite = FALSE, 
            num = FALSE)
   {
