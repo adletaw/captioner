@@ -5,7 +5,7 @@
 \title{Captioner function}
 \usage{
 captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
-  infix = ".")
+  infix = ".", before = FALSE, knitr_op = NULL)
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number.
@@ -23,6 +23,11 @@ If unspecified, \code{captioner} will revert to all numeric values.}
 
 \item{infix}{Character string containing text to go between figure numbers if hierarchical
 numbering is on.  Default is \emph{.}}
+
+\item{before}{Logical indicating whether to display the caption before or after the
+figure.  Applies only to automatic caption display (e.g. with a hook).}
+
+\item{knitr_op}{A named list containing any other chunk options desired.}
 }
 \value{
 A captioner function.
