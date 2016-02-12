@@ -15,7 +15,7 @@
 #' numbering is on.  Default is \emph{.}
 #' @param before Logical indicating whether to display the caption before or after the
 #' figure.  Applies only to automatic caption display (e.g. with a hook).
-#' @param knitr A named list containing any other chunk options desired.
+#' @param knitr_op A named list containing any other chunk options desired.
 #' 
 #' @return A captioner function.
 #' 
