@@ -30,20 +30,26 @@ cap_knitr <- function(where = "after")
     ## Get the function name.  This is specified inside the chunk option.
     cap_function <- options$cap
     
+    ## Create the full caption
+    full_caption <- paste("\n\n", get(cap_function)(cap_name), "\n\n")
+    
     ## Get the display preferences based on the function name.
     ## These must be in the environment in which the function was created.
     chunk_opts <- get("KNITR", envir = environment(get(cap_function)))
     knitr::opts_current$set(chunk_opts)
     
+    ## Display before or after the figure depending on settings
     if(where == "after"){
       if(!before){
+        par(mar = c(1,4,4,2) + 0.1)
         ## Return the caption
-        return(get(cap_function)(cap_name))
+        return(full_caption)
       }
     } else {
       if(before){
+        par(mar = c(5,4,1,2) + 0.1)
         ## Return the caption
-        return(get(cap_function)(cap_name))
+        return(full_caption)
       }
     }
   })
