@@ -15,10 +15,6 @@
 #' @keywords internal   
 #' @export
 
-## This should be an internal function that is automatically called when
-## a new captioner function is created.  Formatting can be set on that first
-## call.  Formatting settings are specific to the captioner function so each
-## one can have different formatting.
 cap_knitr <- function(where = "after")
 {
   knitr::knit_hooks$set(cap = function(before, options) {
@@ -34,7 +30,6 @@ cap_knitr <- function(where = "after")
     full_caption <- paste("\n\n", get(cap_function)(cap_name), "\n\n")
     
     ## Get the display preferences based on the function name.
-    ## These must be in the environment in which the function was created.
     chunk_opts <- get("KNITR", envir = environment(get(cap_function)))
     knitr::opts_current$set(chunk_opts)
     
