@@ -26,20 +26,24 @@
 ## a new captioner function is created.  Formatting can be set on that first
 ## call.  Formatting settings are specific to the captioner function so each
 ## one can have different formatting.
-cap_knitr <- function()
+cap_knitr <- function(before = FALSE)
 {
   knitr::knit_hooks$set(cap = function(before, options) {
+
+    ## Get the chunk name.  This must match the caption name to work.
+    ## Generate a warning/error if there is no match.
+    cap_name     <- options$label
+    
+    ## Get the function name.  This is specified inside the chunk option.
+    cap_function <- options$cap
+    
+    ## Get the display preferences based on the function name.
+    ## These must be in the environment in which the function was created.
+    
     if(!before){
-      ## Get the chunk name.  This must match the caption name to work.
-      ## Generate a warning/error if there is no match.
-      cap_name     <- options$label
-      
-      ## Get the function name.  This is specified inside the chunk option.
-      cap_function <- options$cap
-      
-      ## Get the display preferences based on the function name.
-      ## These must be in the environment in which the function was created.
-      
+      ## Return the caption
+      return(get(cap_function)(cap_name))
+    } else {
       ## Return the caption
       return(get(cap_function)(cap_name))
     }
