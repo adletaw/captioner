@@ -38,6 +38,7 @@ cap_knitr <- function()
       cap_function <- options$cap
       
       ## Get the display preferences based on the function name.
+      ## These must be in the environment in which the function was created.
       
       ## Return the caption
       return(get(cap_function)(cap_name))
