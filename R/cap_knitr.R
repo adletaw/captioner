@@ -10,8 +10,10 @@
 #' display.  The caption is found by accessing the chunk name, so the caption
 #' and chunk names must match.
 #' 
-#' \code{cap}: Logical chunk option specifying whether or not to display a
-#' caption for the given chunk.
+#' To accomodate multiple captioner functions, cap_knitr uses the name of the
+#' function you specify to generate the option name.  In other words, if you
+#' have a captioner function called \code{fig_caps}, the knitr option will be
+#' "fig_caps".  This option is logical (TRUE/FALSE).
 #' 
 #' @examples
 #' 
