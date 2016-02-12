@@ -13,6 +13,7 @@
 #' If unspecified, \code{captioner} will revert to all numeric values.
 #' @param infix Character string containing text to go between figure numbers if hierarchical
 #' numbering is on.  Default is \emph{.}
+#' @param knitr A list of display options for knitr.
 #' 
 #' @return A captioner function.
 #' 
