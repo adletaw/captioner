@@ -2,7 +2,7 @@
 #'
 #' Option to automatically show a caption after a knitr chunk.
 #'
-#' @param cap_function The name of the captioner function to be used.
+#' @param cap_function The name of the captioner function to be used, in quotes.
 #' 
 #' @return NULL
 #' 
@@ -18,16 +18,29 @@
 #' @examples
 #' 
 #' figs <- captioner()
-#' cap_knitr(figs)
+#' cap_knitr("figs")
 #'   
 #' @export
 
-cap_knitr <- function(cap_function)
+## This should be an internal function that is automatically called when
+## a new captioner function is created.  Formatting can be set on that first
+## call.  Formatting settings are specific to the captioner function so each
+## one can have different formatting.
+cap_knitr <- function()
 {
   knitr::knit_hooks$set(cap = function(before, options) {
     if(!before){
-      cap_name <- options$label
-      return(fig_cap(cap_name))
+      ## Get the chunk name.  This must match the caption name to work.
+      ## Generate a warning/error if there is no match.
+      cap_name     <- options$label
+      
+      ## Get the function name.  This is specified inside the chunk option.
+      cap_function <- options$cap
+      
+      ## Get the display preferences based on the function name.
+      
+      ## Return the caption
+      return(get(cap_function)(cap_name))
     }
   })
 }
