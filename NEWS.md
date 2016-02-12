@@ -1,5 +1,11 @@
 # captioner 2.2.3.9000
 
+## Major changes
+
+Added a hook to automatically display figure captions using the chunk name
+to find the caption.  Other chunk options can be set inside the call to
+`captioner()`.
+
 # captioner 2.2.3
 
 ## Minor changes
