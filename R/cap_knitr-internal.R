@@ -33,7 +33,7 @@ cap_knitr <- function(where = "after")
     ## Get the display preferences based on the function name.
     ## These must be in the environment in which the function was created.
     chunk_opts <- get("KNITR", envir = environment(get(cap_function)))
-    print(chunk_opts)
+    knitr::opts_current$set(chunk_opts)
     
     if(where == "after"){
       if(!before){
