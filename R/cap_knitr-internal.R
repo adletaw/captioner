@@ -22,6 +22,10 @@ cap_knitr <- function(where = "after")
     ## Get the chunk name.  This must match the caption name to work.
     ## Generate a warning/error if there is no match.
     cap_name     <- options$label
+    if(!exists(get(cap_function)(cap_name))){
+      stop("Caption not found.  Please confirm that chunk label matches an
+           existing caption.")
+    }
     
     ## Get the function name.  This is specified inside the chunk option.
     cap_function <- options$cap
