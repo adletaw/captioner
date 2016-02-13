@@ -206,7 +206,7 @@ captioner <- function(prefix = "Figure", suffix = ": ",
       return(obj_num)
     }
     
-    if(exists(auto_space)){
+    if(exists("auto_space")){
       .Deprecated(new = "suffix", old = "auto_space")
       warning("Using both auto_space and suffix could result in suffix display
               errors.")
