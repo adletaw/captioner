@@ -4,7 +4,7 @@
 \alias{captioner}
 \title{Captioner function}
 \usage{
-captioner(prefix = "Figure", suffix = ": ", style = NULL,
+captioner(prefix = "Figure ", suffix = ": ", style = NULL,
   style_prefix = FALSE, levels = 1, type = NULL, infix = ".",
   before = FALSE, knitr_op = NULL, css_class = NULL)
 }
