@@ -17,7 +17,7 @@
 #' @param css_class Assign a css class to the caption. Places the caption into 
 #' a span html element with a class.
 #' @param suffix Character string containing text to go after object number and before caption. The default is ": ".
-#' @param style  Character string indicating md style to use. Possible options: "n" - none, "i" - italics, "b" - bold. The default is "n".
+#' @param style  Optional character string indicating md style to use. Possible options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.
 #' 
 #' @return A captioner function.
 #' 
@@ -87,8 +87,10 @@ captioner <- function(prefix = "Figure", suffix = ": ",
   }
   
   # Check style value
-  if (!style %in% c('n','b','i')) 
-    stop("Invalid 'style' value used.  Expecting 'n', 'i', or 'b'.")
+  if(!is.null(style)){
+    if (!style %in% c("b","i","bi")) 
+      stop("Invalid 'style' value used.  Expecting 'b', 'i', or 'bi'.")
+  }
   
   # Force the parameter values for use in the return function
   force(levels)  
