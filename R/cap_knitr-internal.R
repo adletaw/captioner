@@ -19,16 +19,17 @@ cap_knitr <- function(where = "after")
 {
   knitr::knit_hooks$set(cap = function(before, options) {
 
-    ## Get the chunk name.  This must match the caption name to work.
-    ## Generate a warning/error if there is no match.
+    ## Get the captioner function name and chunk name
+    cap_function <- options$cap
     cap_name     <- options$label
-    if(!exists(get(cap_function)(cap_name))){
+    
+    ## Get object list from function environment
+    objects <- get("OBJECTS", envir = environment(get(cap_function)))
+    
+    if(!any(objects$name == cap_name)){
       stop("Caption not found.  Please confirm that chunk label matches an
            existing caption.")
     }
-    
-    ## Get the function name.  This is specified inside the chunk option.
-    cap_function <- options$cap
     
     ## Create the full caption
     full_caption <- paste("\n\n", get(cap_function)(cap_name), "\n\n")
