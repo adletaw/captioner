@@ -5,7 +5,7 @@
 \title{Captioner function}
 \usage{
 captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
-  infix = ".", before = FALSE, knitr_op = NULL)
+  infix = ".", before = FALSE, knitr_op = NULL, css_class = NULL)
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number.
@@ -28,6 +28,9 @@ numbering is on.  Default is \emph{.}}
 figure.  Applies only to automatic caption display (e.g. with a hook).}
 
 \item{knitr_op}{A named list containing any other chunk options desired.}
+
+\item{css_class}{Assign a css class to the caption. Places the caption into 
+a span html element with a class.}
 }
 \value{
 A captioner function.

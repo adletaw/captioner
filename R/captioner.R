@@ -16,6 +16,8 @@
 #' @param before Logical indicating whether to display the caption before or after the
 #' figure.  Applies only to automatic caption display (e.g. with a hook).
 #' @param knitr_op A named list containing any other chunk options desired.
+#' @param css_class Assign a css class to the caption. Places the caption into 
+#' a span html element with a class.
 #' 
 #' @return A captioner function.
 #' 
@@ -55,7 +57,8 @@
 #' @export
 
 captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".", before = FALSE, knitr_op = NULL)
+                      type = NULL, infix = ".", before = FALSE, knitr_op = NULL,
+                      css_class = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
   
@@ -203,7 +206,14 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     }
     else if(display == "full" || display == "f")
     {
-      return(paste0(prefix, obj_num, ": ", caption))
+      cap.text <- paste0(prefix, obj_num, ": ", caption)
+      if (!is.null(css_class))
+      {
+        cap.text <- paste0("<span class=\"", 
+                           css_class, "\">", cap.text, 
+                           "</span>")
+      }
+      return(cap.text)
     }
     else if(display == "cite" || display == "c")
     {
