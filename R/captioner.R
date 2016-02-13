@@ -4,20 +4,26 @@
 #'
 #' @param prefix Character string containing text to go before object number.
 #' The default is \emph{Figure}.
-#' @param levels Logical or number indicating whether or not you want hierarchical numbering,
-#' and if so, how many levels.  Hierarchical numbering is turned off by default.
-#' @param type Vector with same length as \code{levels} indicating whether figure numbering
-#' should be numeric (\emph{n}), lowercase character (\emph{c}), or uppercase character (\emph{C}).
-#' If unspecified, \code{captioner} will revert to all numeric values.
-#' @param infix Character string containing text to go between figure numbers if hierarchical
-#' numbering is on.  Default is \emph{.}
+#' @param suffix Character string containing text to go after object number and
+#' before caption. The default is ": ".
+#' @param style  Optional character string indicating md style to use. Possible
+#' options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.
+#' @param style_prefix Logical specifying whether the style should be applied to
+#' the prefix only (\emph{TRUE}) or the entire caption.  The default is \emph{FALSE}.
+#' @param levels Logical or number indicating whether or not you want hierarchical
+#' numbering, and if so, how many levels.  Hierarchical numbering is turned off by
+#' default.
+#' @param type Vector with same length as \code{levels} indicating whether figure
+#' numbering should be numeric (\emph{n}), lowercase character (\emph{c}), or
+#' uppercase character (\emph{C}). If unspecified, \code{captioner} will revert to
+#' all numeric values.
+#' @param infix Character string containing text to go between figure numbers if
+#' hierarchical numbering is on.  Default is \emph{.}
 #' @param before Logical indicating whether to display the caption before or after the
 #' figure.  Applies only to automatic caption display (e.g. with a hook).
 #' @param knitr_op A named list containing any other chunk options desired.
 #' @param css_class Assign a css class to the caption. Places the caption into 
 #' a span html element with a class.
-#' @param suffix Character string containing text to go after object number and before caption. The default is ": ".
-#' @param style  Optional character string indicating md style to use. Possible options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.
 #' 
 #' @return A captioner function.
 #' 
@@ -57,19 +63,20 @@
 #' @export
 
 captioner <- function(prefix = "Figure", suffix = ": ",
-                      style = NULL, levels = 1, type = NULL, infix = ".", 
-                      before = FALSE, knitr_op = NULL, css_class = NULL)
+                      style = NULL, style_prefix = FALSE,
+                      levels = 1, type = NULL, infix = ".", 
+                      before = FALSE, knitr_op = NULL,
+                      css_class = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
   
   # Check the parameter classes
-  check_class(prefix,     "character")
-  check_class(levels,     "numeric")
-  check_class(infix,      "character")
-  check_class(before,     "logical")
-  check_class(suffix,     "character")
-  
-  # Check "type" vector
+  check_class(prefix,       "character")
+  check_class(suffix,       "character")
+  check_class(style_prefix, "logical")
+  check_class(levels,       "numeric")
+  check_class(infix,        "character")
+  check_class(before,       "logical")
   
   # Set missing/NULL "type" values to numeric
   # Cut off extra values
@@ -218,28 +225,34 @@ captioner <- function(prefix = "Figure", suffix = ": ",
     }
     else if(display == "full" || display == "f")
     {
-      # Generate the caption id
-      cap_id <- paste0(prefix, obj_num, suffix)
-      
       # Add style settings if specified
-      cap_text <- paste0(prefix, obj_num, suffix, caption)
+      if(!is.null(style)){
+        if(style == "i"){
+          tag <- "*"
+        } else if(style == "b"){
+          tag <- "**"
+        } else if(style == "bi"){
+          tag <- "***"
+        }
+        
+        if(prefix_style){
+          # Apply style to prefix only
+          cap_text <- paste0(tag, prefix, obj_num, suffix, tag, caption)
+        } else{
+          # Apply style to entire caption
+          cap_text <- paste0(tag, prefix, obj_num, suffix, caption, tag)
+        }
+      } else {
+        cap_text <- paste0(prefix, obj_num, suffix, caption)
+      }
       
-      if (!is.null(css_class))
-      {
+      if(!is.null(css_class)){
         cap_text <- paste0("<span class=\"", 
                            css_class, "\">", cap_text, 
                            "</span>")
-        return(cap_text)
       }
-
-      id <- 
-      if (style == 'i') 
-        text <- paste0("*", id, "*", caption)
-      else if (style == 'b') 
-        text <- paste0("**", id, "**", caption)
-      else 
-        text <- paste0(id, caption)
-      return(text)
+      
+      return(cap_text)
     }
     else if(display == "cite" || display == "c")
     {
