@@ -1,5 +1,8 @@
 # captioner 2.2.3.9000
 
+In this version, enhancements have been made to allow formatting via knitr
+chunk options, CSS, and LaTeX.
+
 ## Major changes
 
 ### Knitr hooks
