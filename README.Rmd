@@ -20,11 +20,13 @@ library(captioner)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/captioner)](http://cran.r-project.org/package=captioner)
 [![Coverage Status](https://coveralls.io/repos/adletaw/captioner/badge.svg?branch=master&service=github)](https://coveralls.io/github/adletaw/captioner?branch=master)
 
+
 *captioner* is an R package for generating figure numbers and captions
 
-**Installation**
+# Installation
 
-*captioner* is now available on CRAN.  If you would like to install the current development version:
+*captioner* is now available on [CRAN](https://cran.r-project.org/web/packages/captioner/index.html).
+If you would like to install the current development version:
 
 * `install.packages("devtools")`
 * `devtools::install_github("adletaw/captioner")`
@@ -34,11 +36,11 @@ or if you want the vignette:
 * `devtools::install_github("adletaw/captioner", build_vignettes = TRUE)`
 * `vignette("using_captioner")`
 
-**Usage**
+# Basic Usage
 
-`captioner()` returns a captioner function for each set of figures, tables, etc. that you want to create.  See the help files and vignette for more details.
+A call to the function `captioner()` returns a captioner function for each set of figures, tables, etc. that you want to create.
 
-For example, you can generate a full caption:
+You can generate a full caption:
 
 ```{r ex_1}
 fig_nums <- captioner()
@@ -51,12 +53,17 @@ Or a figure number for citing:
 fig_nums("my_pretty_figure", display = "cite")
 ```
 
-Or you can store the caption and use it in your R code chunk in markdown documents:
+You can also store the caption and use it in your R code chunk in markdown documents:
 
-```{r ex_3}
+```{r ex_3a}
 my_first_caption <- fig_nums("my_other_figure", "My other figure's caption.")
+```
+
+```{r ex_3b}
+plot(cars)
 my_first_caption
 ```
+
 
 If you create a new set of captions, perhaps for your tables, the numbering restarts:
 

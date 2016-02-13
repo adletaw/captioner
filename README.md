@@ -3,9 +3,10 @@
 
 *captioner* is an R package for generating figure numbers and captions
 
-**Installation**
+Installation
+============
 
-*captioner* is now available on CRAN. If you would like to install the current development version:
+*captioner* is now available on [CRAN](https://cran.r-project.org/web/packages/captioner/index.html). If you would like to install the current development version:
 
 -   `install.packages("devtools")`
 -   `devtools::install_github("adletaw/captioner")`
@@ -15,11 +16,12 @@ or if you want the vignette:
 -   `devtools::install_github("adletaw/captioner", build_vignettes = TRUE)`
 -   `vignette("using_captioner")`
 
-**Usage**
+Basic Usage
+===========
 
-`captioner()` returns a captioner function for each set of figures, tables, etc. that you want to create. See the help files and vignette for more details.
+A call to the function `captioner()` returns a captioner function for each set of figures, tables, etc. that you want to create.
 
-For example, you can generate a full caption:
+You can generate a full caption:
 
 ``` r
 fig_nums <- captioner()
@@ -34,10 +36,19 @@ fig_nums("my_pretty_figure", display = "cite")
 #> [1] "Figure  1"
 ```
 
-Or you can store the caption and use it in your R code chunk in markdown documents:
+You can also store the caption and use it in your R code chunk in markdown documents:
 
 ``` r
 my_first_caption <- fig_nums("my_other_figure", "My other figure's caption.")
+```
+
+``` r
+plot(cars)
+```
+
+![](README-ex_3b-1.png)<!-- -->
+
+``` r
 my_first_caption
 #> [1] "Figure  2: My other figure's caption."
 ```
