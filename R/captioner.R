@@ -4,8 +4,6 @@
 #'
 #' @param prefix Character string containing text to go before object number.
 #' The default is \emph{Figure}.
-#' @param auto_space Logical indicating whether or not a space should automatically be added
-#' following the prefix.  Space is added by default.
 #' @param levels Logical or number indicating whether or not you want hierarchical numbering,
 #' and if so, how many levels.  Hierarchical numbering is turned off by default.
 #' @param type Vector with same length as \code{levels} indicating whether figure numbering
@@ -58,7 +56,7 @@
 #'   
 #' @export
 
-captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
+captioner <- function(prefix = "Figure", suffix = ": ",
                       style = NULL, levels = 1, type = NULL, infix = ".", 
                       before = FALSE, knitr_op = NULL, css_class = NULL)
 {
@@ -66,7 +64,6 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
   
   # Check the parameter classes
   check_class(prefix,     "character")
-  check_class(auto_space, "logical")
   check_class(levels,     "numeric")
   check_class(infix,      "character")
   check_class(before,     "logical")
@@ -92,11 +89,6 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
   # Check style value
   if (!style %in% c('n','b','i')) 
     stop("Invalid 'style' value used.  Expecting 'n', 'i', or 'b'.")
-  
-  # Add a space after the prefix if auto_space is on
-  if(auto_space){
-    prefix <- paste(prefix, " ", sep = "")
-  }
   
   # Force the parameter values for use in the return function
   force(levels)  
@@ -194,10 +186,7 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
     
     ## Format the display ready output ---
     
-    # create display version of object number
-    obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
-    
-    # for backwards compatibility, use the cite and num options first
+    # Check the deprecated options, cite, num, and auto_space
     if(cite){
       .Deprecated(new = "display", old = "cite")
       return(paste0(prefix, obj_num))
@@ -208,6 +197,19 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
       return(obj_num)
     }
     
+    if(exists(auto_space)){
+      .Deprecated(new = "suffix", old = "auto_space")
+      warning("Using both auto_space and suffix could result in suffix display
+              errors.")
+      if(!auto_space){
+        suffix <- ":"
+      }
+    }
+    
+    # Create display version of object number
+    obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
+    
+    # Generate final display version
     if(display == FALSE)
     {
       return(invisible())
