@@ -13,11 +13,16 @@
 #' If unspecified, \code{captioner} will revert to all numeric values.
 #' @param infix Character string containing text to go between figure numbers if hierarchical
 #' numbering is on.  Default is \emph{.}
+<<<<<<< HEAD
 #' @param before Logical indicating whether to display the caption before or after the
 #' figure.  Applies only to automatic caption display (e.g. with a hook).
 #' @param knitr_op A named list containing any other chunk options desired.
 #' @param css_class Assign a css class to the caption. Places the caption into 
 #' a span html element with a class.
+=======
+#' @param suffix Character string containing text to go after object number and before caption. The default is ": ".
+#' @param style  Character string indicating md style to use for prefix (not the name and not in the in-text citation). Possible options: "n" - none, "i" - italics, "b" - bold. The default is "n".
+>>>>>>> 3ed198172d8141270fe33c0df6baecb4421d3f6a
 #' 
 #' @return A captioner function.
 #' 
@@ -56,9 +61,9 @@
 #'   
 #' @export
 
-captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
-                      type = NULL, infix = ".", before = FALSE, knitr_op = NULL,
-                      css_class = NULL)
+captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
+                      style = "n", levels = 1, type = NULL, infix = ".", 
+                      before = FALSE, knitr_op = NULL, css_class = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
   
@@ -68,6 +73,8 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   check_class(levels,     "numeric")
   check_class(infix,      "character")
   check_class(before,     "logical")
+  check_class(suffix,     "character")
+  check_class(style,      "character")  
   
   # Check "type" vector
   
@@ -85,6 +92,10 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   if(!all(type %in% c("n", "c", "C"))){
     stop("Invalid 'type' value used.  Expecting 'n', 'c', or 'C'.")
   }
+  
+  # Check style value
+  if (!style %in% c('n','b','i')) 
+    stop("Invalid 'style' value used.  Expecting 'n', 'i', or 'b'.")
   
   # Add a space after the prefix if auto_space is on
   if(auto_space){
@@ -208,13 +219,24 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     else if(display == "full" || display == "f")
     {
       cap.text <- paste0(prefix, obj_num, ": ", caption)
+      
       if (!is.null(css_class))
       {
         cap.text <- paste0("<span class=\"", 
                            css_class, "\">", cap.text, 
                            "</span>")
+        return(cap.text)
       }
-      return(cap.text)
+
+      id <- paste0(prefix, obj_num, suffix)
+      if (style == 'i') 
+        text <- paste0("*", id, "*", caption)
+      else if (style == 'b') 
+        text <- paste0("**", id, "**", caption)
+      else 
+        text <- paste0(id, caption)
+      return(text)
+
     }
     else if(display == "cite" || display == "c")
     {
