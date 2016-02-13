@@ -25,34 +25,41 @@ You can generate a full caption:
 
 ``` r
 fig_nums <- captioner()
-fig_nums("my_pretty_figure", "My pretty figure's caption.")
-#> [1] "Figure  1: My pretty figure's caption."
+fig_nums("my_first_figure", "My first figure's caption.")
+#> [1] "Figure  1: My first figure's caption."
 ```
 
-You can also generate a figure reference:
-
-``` r
-fig_nums("my_pretty_figure", display = "cite")
-#> [1] "Figure  1"
-```
-
-Which can be displayed inline using inline code chunks, like so (Figure 1).
-
-You can also store the caption and use it in your R code chunk in markdown documents:
-
-``` r
-my_first_caption <- fig_nums("my_other_figure", "My other figure's caption.")
-```
+And display it under your plot using inline code chunks:
 
 ``` r
 plot(cars)
 ```
 
-![](README-ex_3b-1.png)<!-- -->
+![](README-ex_1b-1.png)<!-- -->
+
+Figure 1: My first figure's caption.
+
+Once you have created the caption, you can display it simply by using your function and specifying the name of the caption you created.
 
 ``` r
-my_first_caption
-#> [1] "Figure  2: My other figure's caption."
+fig_nums("my_first_figure")
+#> [1] "Figure  1: My first figure's caption."
+```
+
+The `display` parameter allows you to adjust how much of the caption is displayed. For example, you can also generate a figure reference:
+
+``` r
+fig_nums("my_first_figure", display = "cite")
+#> [1] "Figure  1"
+```
+
+Which can be displayed inline using inline code chunks, like so (Figure 2).
+
+Each new call to your captioner function will create a caption with an incremented number. For example:
+
+``` r
+fig_nums("my_second_figure", "The caption for my second figure.")
+#> [1] "Figure  3: The caption for my second figure."
 ```
 
 If you create a new set of captions, perhaps for your tables, the numbering restarts:
@@ -68,7 +75,7 @@ You can abbreviate in text citations by using `partial`<sup>1</sup> from the pac
 ``` r
 citef <- pryr::partial(fig_nums, display = "cite")
 citef("my_pretty_figure")
-#> [1] "Figure  1"
+#> [1] "Figure  2"
 ```
 
 Take a look at the [vignette](https://github.com/adletaw/captioner/tree/master/vignettes/using_captioner.Rmd) for many more details.

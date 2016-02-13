@@ -42,41 +42,50 @@ A call to the function `captioner()` returns a captioner function for each set o
 
 You can generate a full caption:
 
-```{r ex_1}
+```{r ex_1a}
 fig_nums <- captioner()
-fig_nums("my_pretty_figure", "My pretty figure's caption.")
+fig_nums("my_first_figure", "My first figure's caption.")
 ```
 
-You can also generate a figure reference:
+And display it under your plot using inline code chunks:
+
+```{r ex_1b}
+plot(cars)
+```
+
+`r fig_nums("my_first_figure")`
+
+Once you have created the caption, you can display it simply by using your function and specifying the name of the caption you created.
 
 ```{r ex_2}
-fig_nums("my_pretty_figure", display = "cite")
+fig_nums("my_first_figure")
+```
+
+The `display` parameter allows you to adjust how much of the caption is displayed.  For example, you can also generate a figure reference:
+
+```{r ex_3}
+fig_nums("my_first_figure", display = "cite")
 ```
 
 Which can be displayed inline using inline code chunks, like so (`r fig_nums("my_pretty_figure", display = "cite")`).
 
-You can also store the caption and use it in your R code chunk in markdown documents:
+Each new call to your captioner function will create a caption with an incremented number.  For example:
 
-```{r ex_3a}
-my_first_caption <- fig_nums("my_other_figure", "My other figure's caption.")
-```
-
-```{r ex_3b}
-plot(cars)
-my_first_caption
+```{r ex_4}
+fig_nums("my_second_figure", "The caption for my second figure.")
 ```
 
 
 If you create a new set of captions, perhaps for your tables, the numbering restarts:
 
-```{r ex_4}
+```{r ex_5}
 table_nums <- captioner(prefix = "Table")
 table_nums("cat_table", "A table of cat breeds.")
 ```
 
 You can abbreviate in text citations by using `partial`<sup>1</sup> from the package `pryr` to create a shorter version of the function.  For example:
 
-```{r ex_5}
+```{r ex_6}
 citef <- pryr::partial(fig_nums, display = "cite")
 citef("my_pretty_figure")
 ```
