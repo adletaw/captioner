@@ -218,7 +218,7 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
     }
     else if(display == "full" || display == "f")
     {
-      cap.text <- paste0(prefix, obj_num, ": ", caption)
+      cap.text <- paste0(prefix, obj_num, suffix, caption)
       
       if (!is.null(css_class))
       {
