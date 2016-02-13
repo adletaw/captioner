@@ -8,3 +8,4 @@
 ^README-.*\.png$
 ^NEWS\.md$
 ^R/release_questions\.R$
+^usage_tests$
