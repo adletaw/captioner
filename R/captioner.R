@@ -240,7 +240,7 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
     }
     else if(display == "cite" || display == "c")
     {
-      return(paste0(prefix, obj_num))
+      return(paste0(prefix, obj_num, suffix))
     }
     else if(display == "num"  || display == "n")
     {
