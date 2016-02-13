@@ -235,7 +235,7 @@ captioner <- function(prefix = "Figure", suffix = ": ",
           tag <- "***"
         }
         
-        if(prefix_style){
+        if(style_prefix){
           # Apply style to prefix only
           cap_text <- paste0(tag, prefix, obj_num, suffix, tag, caption)
         } else{
