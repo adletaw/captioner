@@ -29,12 +29,14 @@ fig_nums("my_pretty_figure", "My pretty figure's caption.")
 #> [1] "Figure  1: My pretty figure's caption."
 ```
 
-Or a figure number for citing:
+You can also generate a figure reference:
 
 ``` r
 fig_nums("my_pretty_figure", display = "cite")
 #> [1] "Figure  1"
 ```
+
+Which can be displayed inline using inline code chunks, like so (Figure 1).
 
 You can also store the caption and use it in your R code chunk in markdown documents:
 
