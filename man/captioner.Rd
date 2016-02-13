@@ -4,9 +4,9 @@
 \alias{captioner}
 \title{Captioner function}
 \usage{
-captioner(prefix = "Figure ", suffix = ": ", style = NULL,
-  style_prefix = FALSE, levels = 1, type = NULL, infix = ".",
-  before = FALSE, knitr_op = NULL, css_class = NULL)
+captioner(prefix = "Figure", suffix = ":", auto_space = TRUE,
+  style = NULL, style_prefix = FALSE, levels = 1, type = NULL,
+  infix = ".", before = FALSE, knitr_op = NULL, css_class = NULL)
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number.
@@ -14,6 +14,9 @@ The default is \emph{Figure}.}
 
 \item{suffix}{Character string containing text to go after object number and
 before caption. The default is ": ".}
+
+\item{auto_space}{Logical indicating whether a single space should automatically
+be added after the prefix and suffx. Default is \emph{TRUE}.}
 
 \item{style}{Optional character string indicating md style to use. Possible
 options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.}

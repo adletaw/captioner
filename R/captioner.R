@@ -6,6 +6,8 @@
 #' The default is \emph{Figure}.
 #' @param suffix Character string containing text to go after object number and
 #' before caption. The default is ": ".
+#' @param auto_space Logical indicating whether a single space should automatically
+#' be added after the prefix and suffx. Default is \emph{TRUE}.
 #' @param style  Optional character string indicating md style to use. Possible
 #' options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.
 #' @param style_prefix Logical specifying whether the style should be applied to
@@ -62,7 +64,7 @@
 #'   
 #' @export
 
-captioner <- function(prefix = "Figure ", suffix = ": ",
+captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
                       style = NULL, style_prefix = FALSE,
                       levels = 1, type = NULL, infix = ".", 
                       before = FALSE, knitr_op = NULL,
@@ -118,6 +120,12 @@ captioner <- function(prefix = "Figure ", suffix = ": ",
   OBJECTS$number[[1]][which(type == "C")] <- "A"
   
   ## Formatting --
+  
+  # Add space if auto_space is TRUE
+  if(auto_space){
+    prefix <- paste0(prefix, " ")
+    suffix <- paste0(suffix, " ")
+  }
   
   # Display before or after the figure
   if(before){
@@ -195,7 +203,7 @@ captioner <- function(prefix = "Figure ", suffix = ": ",
     
     ## Format the display ready output ---
     
-    # Check the deprecated options, cite, num, and auto_space
+    # Check the deprecated options, cite and num
     if(cite){
       .Deprecated(new = "display", old = "cite")
       return(paste0(prefix, obj_num))
@@ -204,15 +212,6 @@ captioner <- function(prefix = "Figure ", suffix = ": ",
     if(num){
       .Deprecated(new = "display", old = "num")
       return(obj_num)
-    }
-    
-    if(exists("auto_space")){
-      .Deprecated(new = "suffix", old = "auto_space")
-      warning("Using both auto_space and suffix could result in suffix display
-              errors.")
-      if(!auto_space){
-        suffix <- ":"
-      }
     }
     
     # Create display version of object number

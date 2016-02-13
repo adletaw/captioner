@@ -8,9 +8,7 @@ chunk options, CSS, and LaTeX.
 ### Figure suffix
 
 The parameter `suffix` allows you to specify a figure suffix.  The default
-value is `: `, but if an alternate is used, you must specify the blank space
-between the figure number and the caption manually.  `auto_space` is now
-deprecated.
+value is `:`. `auto_space` now affects both the prefix and suffix.
 
 ### Markdown style formatting
 
