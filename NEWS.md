@@ -2,6 +2,8 @@
 
 ## Major changes
 
+### Knitr hooks
+
 Added a hook to automatically display figure captions using the chunk name
 to find the caption.  Other chunk options can be set inside the call to
 `captioner()`.
@@ -15,6 +17,11 @@ The new parameters `before` and `knitr_op` were also added to `captioner()`.
 (`before = TRUE`) or after (`before = FALSE`) when using automatic caption
 display. `knitr_op` takes a named list containing any other chunk options that
 you want to keep constant across all captioned chunks.
+
+### CSS classes
+
+You can specify a CSS class to go with the caption and aid in formatting by
+using the parameter `css_class` when creating your `captioner()` function.
 
 # captioner 2.2.3
 
