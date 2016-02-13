@@ -62,7 +62,7 @@
 #'   
 #' @export
 
-captioner <- function(prefix = "Figure", suffix = ": ",
+captioner <- function(prefix = "Figure ", suffix = ": ",
                       style = NULL, style_prefix = FALSE,
                       levels = 1, type = NULL, infix = ".", 
                       before = FALSE, knitr_op = NULL,
