@@ -218,14 +218,14 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
     }
     else if(display == "full" || display == "f")
     {
-      cap.text <- paste0(prefix, obj_num, suffix, caption)
+      cap_text <- paste0(prefix, obj_num, suffix, caption)
       
       if (!is.null(css_class))
       {
-        cap.text <- paste0("<span class=\"", 
-                           css_class, "\">", cap.text, 
+        cap_text <- paste0("<span class=\"", 
+                           css_class, "\">", cap_text, 
                            "</span>")
-        return(cap.text)
+        return(cap_text)
       }
 
       id <- paste0(prefix, obj_num, suffix)
