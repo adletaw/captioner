@@ -4,25 +4,34 @@
 \alias{captioner}
 \title{Captioner function}
 \usage{
-captioner(prefix = "Figure", auto_space = TRUE, levels = 1, type = NULL,
-  infix = ".", before = FALSE, knitr_op = NULL, css_class = NULL)
+captioner(prefix = "Figure", suffix = ": ", style = NULL,
+  style_prefix = FALSE, levels = 1, type = NULL, infix = ".",
+  before = FALSE, knitr_op = NULL, css_class = NULL)
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number.
 The default is \emph{Figure}.}
 
-\item{auto_space}{Logical indicating whether or not a space should automatically be added
-following the prefix.  Space is added by default.}
+\item{suffix}{Character string containing text to go after object number and
+before caption. The default is ": ".}
 
-\item{levels}{Logical or number indicating whether or not you want hierarchical numbering,
-and if so, how many levels.  Hierarchical numbering is turned off by default.}
+\item{style}{Optional character string indicating md style to use. Possible
+options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.}
 
-\item{type}{Vector with same length as \code{levels} indicating whether figure numbering
-should be numeric (\emph{n}), lowercase character (\emph{c}), or uppercase character (\emph{C}).
-If unspecified, \code{captioner} will revert to all numeric values.}
+\item{style_prefix}{Logical specifying whether the style should be applied to
+the prefix only (\emph{TRUE}) or the entire caption.  The default is \emph{FALSE}.}
 
-\item{infix}{Character string containing text to go between figure numbers if hierarchical
-numbering is on.  Default is \emph{.}}
+\item{levels}{Logical or number indicating whether or not you want hierarchical
+numbering, and if so, how many levels.  Hierarchical numbering is turned off by
+default.}
+
+\item{type}{Vector with same length as \code{levels} indicating whether figure
+numbering should be numeric (\emph{n}), lowercase character (\emph{c}), or
+uppercase character (\emph{C}). If unspecified, \code{captioner} will revert to
+all numeric values.}
+
+\item{infix}{Character string containing text to go between figure numbers if
+hierarchical numbering is on.  Default is \emph{.}}
 
 \item{before}{Logical indicating whether to display the caption before or after the
 figure.  Applies only to automatic caption display (e.g. with a hook).}
