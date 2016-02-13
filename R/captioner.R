@@ -13,16 +13,13 @@
 #' If unspecified, \code{captioner} will revert to all numeric values.
 #' @param infix Character string containing text to go between figure numbers if hierarchical
 #' numbering is on.  Default is \emph{.}
-<<<<<<< HEAD
 #' @param before Logical indicating whether to display the caption before or after the
 #' figure.  Applies only to automatic caption display (e.g. with a hook).
 #' @param knitr_op A named list containing any other chunk options desired.
 #' @param css_class Assign a css class to the caption. Places the caption into 
 #' a span html element with a class.
-=======
 #' @param suffix Character string containing text to go after object number and before caption. The default is ": ".
-#' @param style  Character string indicating md style to use for prefix (not the name and not in the in-text citation). Possible options: "n" - none, "i" - italics, "b" - bold. The default is "n".
->>>>>>> 3ed198172d8141270fe33c0df6baecb4421d3f6a
+#' @param style  Character string indicating md style to use. Possible options: "n" - none, "i" - italics, "b" - bold. The default is "n".
 #' 
 #' @return A captioner function.
 #' 
@@ -62,7 +59,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
-                      style = "n", levels = 1, type = NULL, infix = ".", 
+                      style = NULL, levels = 1, type = NULL, infix = ".", 
                       before = FALSE, knitr_op = NULL, css_class = NULL)
 {
   ## Make sure all of the parameters are setup correctly ---
@@ -74,7 +71,6 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
   check_class(infix,      "character")
   check_class(before,     "logical")
   check_class(suffix,     "character")
-  check_class(style,      "character")  
   
   # Check "type" vector
   
@@ -218,6 +214,10 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
     }
     else if(display == "full" || display == "f")
     {
+      # Generate the caption id
+      cap_id <- paste0(prefix, obj_num, suffix)
+      
+      # Add style settings if specified
       cap_text <- paste0(prefix, obj_num, suffix, caption)
       
       if (!is.null(css_class))
@@ -228,7 +228,7 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
         return(cap_text)
       }
 
-      id <- paste0(prefix, obj_num, suffix)
+      id <- 
       if (style == 'i') 
         text <- paste0("*", id, "*", caption)
       else if (style == 'b') 
@@ -236,7 +236,6 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
       else 
         text <- paste0(id, caption)
       return(text)
-
     }
     else if(display == "cite" || display == "c")
     {
