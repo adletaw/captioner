@@ -67,6 +67,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   check_class(auto_space, "logical")
   check_class(levels,     "numeric")
   check_class(infix,      "character")
+  check_class(before,     "logical")
   
   # Check "type" vector
   
@@ -186,8 +187,6 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
     
     # create display version of object number
     obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
-    
-    # choose display format and return
     
     # for backwards compatibility, use the cite and num options first
     if(cite){
