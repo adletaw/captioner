@@ -20,8 +20,11 @@ library(captioner)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/captioner)](http://cran.r-project.org/package=captioner)
 [![Coverage Status](https://coveralls.io/repos/adletaw/captioner/badge.svg?branch=master&service=github)](https://coveralls.io/github/adletaw/captioner?branch=master)
 
+# Overview
 
 *captioner* is an R package for generating figure numbers and captions
+
+Information about recent updates can be found in [NEWS.md](https://github.com/adletaw/captioner/blob/master/NEWS.md).
 
 # Installation
 
@@ -55,7 +58,7 @@ plot(cars)
 
 `r fig_nums("my_first_figure")`
 
-Once you have created the caption, you can display it simply by using your function and specifying the name of the caption you created.
+Once you have created the caption, you can display it by using your function and specifying the name of the caption you created.
 
 ```{r ex_2}
 fig_nums("my_first_figure")
@@ -67,7 +70,7 @@ The `display` parameter allows you to adjust how much of the caption is displaye
 fig_nums("my_first_figure", display = "cite")
 ```
 
-Which can be displayed inline using inline code chunks, like so (`r fig_nums("my_pretty_figure", display = "cite")`).
+Which can be displayed inline using inline code chunks, like so (`r fig_nums("my_first_figure", display = "cite")`).
 
 Each new call to your captioner function will create a caption with an incremented number.  For example:
 
@@ -75,19 +78,26 @@ Each new call to your captioner function will create a caption with an increment
 fig_nums("my_second_figure", "The caption for my second figure.")
 ```
 
-
-If you create a new set of captions, perhaps for your tables, the numbering restarts:
+If you need to create a new set of captions with new numbering, for example, for your tables, simply make a new call to the `captioner` function.  Using the `prefix` parameter allows you to specify the prefix associated with your new captions:
 
 ```{r ex_5}
 table_nums <- captioner(prefix = "Table")
 table_nums("cat_table", "A table of cat breeds.")
 ```
 
-You can abbreviate in text citations by using `partial`<sup>1</sup> from the package `pryr` to create a shorter version of the function.  For example:
+|Breed          |Coat       |
+|---            |---        |
+|Abyssinian     | Short     |
+|Aegean         | Semi-Long |
+|Persian        | Long      |
+
+`r table_nums("cat_table")`
+
+One way to make in-text citations easier is by using `partial`<sup>1</sup> from the package [pryr](https://github.com/hadley/pryr) to create a shorter version of the function.  For example:
 
 ```{r ex_6}
 citef <- pryr::partial(fig_nums, display = "cite")
-citef("my_pretty_figure")
+citef("my_second_figure")
 ```
 
 Take a look at the [vignette](https://github.com/adletaw/captioner/tree/master/vignettes/using_captioner.Rmd) for many more details.
