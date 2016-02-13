@@ -160,10 +160,12 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
       if(length(objects$number) == length(objects$name)){
         if(level){
           # bump the numbering at an earlier level
-          objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], level)
+          objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], 
+                                                 level)
         } else{
           # increment the previous number and add as the new number
-          objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], levels)
+          objects$number[[obj_ind]] <- increment(objects$number[[obj_ind - 1]], 
+                                                 levels)
           
         }
       }
