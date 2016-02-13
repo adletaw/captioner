@@ -88,7 +88,7 @@ captioner <- function(prefix = "Figure", auto_space = TRUE, levels = 1,
   
   # Add a space after the prefix if auto_space is on
   if(auto_space){
-    prefix <- paste(prefix, " ")
+    prefix <- paste(prefix, " ", sep = "")
   }
   
   # Force the parameter values for use in the return function
