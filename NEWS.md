@@ -5,6 +5,19 @@ chunk options, CSS, and LaTeX.
 
 ## Major changes
 
+### Figure suffix
+
+The parameter `suffix` allows you to specify a figure suffix.  The default
+value is `: `, but if an alternate is used, you must specify the blank space
+between the figure number and the caption manually.  `auto_space` is now
+deprecated.
+
+### Markdown style formatting
+
+Using `style` and `style_prefix` you can set markdown style formatting (bold,
+italic, bold+italic), which applies either to the entire caption
+(`style_prefix = FALSE`) or to the prefix only (`style_prefix = TRUE`).
+
 ### Knitr hooks
 
 Added a hook to automatically display figure captions using the chunk name
