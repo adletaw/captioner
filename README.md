@@ -1,6 +1,9 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![Build Status](https://travis-ci.org/adletaw/captioner.png?branch=master)](https://travis-ci.org/adletaw/captioner) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/captioner)](http://cran.r-project.org/package=captioner) [![Coverage Status](https://coveralls.io/repos/adletaw/captioner/badge.svg?branch=master&service=github)](https://coveralls.io/github/adletaw/captioner?branch=master)
 
+Status
+======
+
 *captioner* is no longer under development as the functionality has been replaced with the new package [bookdown](https://github.com/rstudio/bookdown). Thank you to everyone who used and contributed!
 
 Overview
