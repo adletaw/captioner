@@ -20,6 +20,10 @@ library(captioner)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/captioner)](http://cran.r-project.org/package=captioner)
 [![Coverage Status](https://coveralls.io/repos/adletaw/captioner/badge.svg?branch=master&service=github)](https://coveralls.io/github/adletaw/captioner?branch=master)
 
+*captioner* is no longer under development as the functionality has been replaced
+with the new package [bookdown](https://github.com/rstudio/bookdown). Thank you
+to everyone who used and contributed!
+
 # Overview
 
 *captioner* is an R package for generating figure numbers and captions
