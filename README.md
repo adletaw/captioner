@@ -4,7 +4,7 @@
 Status
 ======
 
-*captioner* is no longer under development as the functionality has been replaced with the new package [bookdown](https://github.com/rstudio/bookdown). Thank you to everyone who used and contributed!
+*captioner* issues now reopened; please see [bookdown](https://github.com/rstudio/bookdown) for integrated usage of captioning.
 
 Overview
 ========
