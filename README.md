@@ -36,7 +36,7 @@ You can generate a full caption:
 ``` r
 fig_nums <- captioner()
 fig_nums("my_first_figure", "My first figure's caption.")
-#> [1] "Figure 1: My first figure's caption."
+#> [1] "Figure  1: My first figure's caption."
 ```
 
 And display it under your plot using inline code chunks:
@@ -45,7 +45,7 @@ And display it under your plot using inline code chunks:
 plot(cars)
 ```
 
-![](README-ex_1b-1.png)<!-- -->
+![](README-ex_1b-1.png)
 
 Figure 1: My first figure's caption.
 
@@ -53,14 +53,14 @@ Once you have created the caption, you can display it by using your function and
 
 ``` r
 fig_nums("my_first_figure")
-#> [1] "Figure 1: My first figure's caption."
+#> [1] "Figure  1: My first figure's caption."
 ```
 
 The `display` parameter allows you to adjust how much of the caption is displayed. For example, you can also generate a figure reference:
 
 ``` r
 fig_nums("my_first_figure", display = "cite")
-#> [1] "Figure 1"
+#> [1] "Figure  1"
 ```
 
 Which can be displayed inline using inline code chunks, like so (Figure 1).
@@ -69,7 +69,7 @@ Each new call to your captioner function will create a caption with an increment
 
 ``` r
 fig_nums("my_second_figure", "The caption for my second figure.")
-#> [1] "Figure 2: The caption for my second figure."
+#> [1] "Figure  2: The caption for my second figure."
 ```
 
 If you need to create a new set of captions with new numbering, for example, for your tables, simply make a new call to the `captioner` function. Using the `prefix` parameter allows you to specify the prefix associated with your new captions:
@@ -77,7 +77,7 @@ If you need to create a new set of captions with new numbering, for example, for
 ``` r
 table_nums <- captioner(prefix = "Table")
 table_nums("cat_table", "A table of cat breeds.")
-#> [1] "Table 1: A table of cat breeds."
+#> [1] "Table  1: A table of cat breeds."
 ```
 
 | Breed      | Coat      |
@@ -93,7 +93,7 @@ One way to make in-text citations easier is by using `partial`<sup>1</sup> from 
 ``` r
 citef <- pryr::partial(fig_nums, display = "cite")
 citef("my_second_figure")
-#> [1] "Figure 2"
+#> [1] "Figure  2"
 ```
 
 Take a look at the [vignette](https://github.com/adletaw/captioner/tree/master/vignettes/using_captioner.Rmd) for many more details.
