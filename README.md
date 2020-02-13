@@ -4,7 +4,7 @@
 Status
 ======
 
-*captioner* issues now reopened; please see [bookdown](https://github.com/rstudio/bookdown) for integrated usage of captioning.
+*captioner* is no longer under development. Feel free to fork, copy, use as desired. No attribution necessary.
 
 Overview
 ========
